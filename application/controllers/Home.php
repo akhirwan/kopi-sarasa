@@ -3,36 +3,67 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
+	function __construct(){
+		parent::__construct();
+		date_default_timezone_set('Asia/Jakarta');
+		$this->load->model('Model_app');
+	}
+
 	public function Index()	{
-		$this->load->view('template/header');
-		$this->load->view('home');
-		$this->load->view('template/footer');
+		$data['config']	= $this->Model_app->get_data('config_info')->row();
+
+		$data['title'] = 'Home';
+		$data['meta_keyword'] = $data['config']->app_name;
+		$data['meta_description'] = $data['config']->company;
+		$data['active_home'] = 'active';
+
+		$data['quotes'] = $this->db->query("SELECT * FROM quotes WHERE paging = 'home' AND is_active = 1")->result();
+		
+		$this->load->view('template/header', $data);
+		$this->load->view('public/home', $data);
+		$this->load->view('template/footer', $data);
 	}
 
 	public function About() {
-		$this->load->view('template/header');
-		$this->load->view('about');
-		$this->load->view('template/footer');
+		$data['config']	= $this->Model_app->get_data('config_info')->row();
+
+		$data['title'] = 'About';
+		$data['meta_keyword'] = $data['config']->app_name;
+		$data['meta_description'] = $data['config']->company;
+		$data['active_about'] = 'active';
+
+		$data['quotes'] = $this->db->query("SELECT * FROM quotes WHERE paging = 'about' AND is_active = 1")->result();
+		
+		$this->load->view('template/header', $data);
+		$this->load->view('public/about', $data);
+		$this->load->view('template/footer', $data);
+	}
+	
+	public function Contact() {
+		$data['config']	= $this->Model_app->get_data('config_info')->row();
+
+		$data['title'] = 'Contact';
+		$data['meta_keyword'] = $data['config']->app_name;
+		$data['meta_description'] = $data['config']->company;
+		$data['active_contact'] = 'active';
+
+		$data['faqs'] = $this->db->query("SELECT * FROM faq WHERE is_active = 1")->result();
+		$data['quo_contact'] = $this->db->query("SELECT * FROM quotes WHERE paging = 'contact' AND is_active = 1")->result();
+		$data['quo_faq'] = $this->db->query("SELECT * FROM quotes WHERE paging = 'faq' AND is_active = 1")->result();
+
+		$this->load->view('template/header', $data);
+		$this->load->view('public/contact', $data);
+		$this->load->view('template/footer', $data);
 	}
 
-	public function Contact() {
-		$this->load->view('template/header');
-		$this->load->view('contact');
-		$this->load->view('template/footer');
+	public function Message() {
+		// var_dump($this->input->post('name'));
+		$data['id'] = time();
+		$data['name'] = $this->input->post('name');
+		$data['email'] = $this->input->post('email');
+		$data['message'] = $this->input->post('message');
+
+		$this->Model_app->insert_data($data, 'messages');
+		redirect(base_url().'contact');
 	}
 }
