@@ -4,6 +4,9 @@
 <head>
     <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="<?php echo base_url().'assets/public/img/logo/'.$config->logo; ?>" rel="icon">
+    
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
@@ -35,7 +38,7 @@
 						<?php
 							if(isset($_GET['alert'])){
 								if($_GET['alert']=="gagal"){
-									echo "<div class='alert fresh-color alert-danger' role='alert'><strong>Maaf!</strong> Username & Password Salah.</div>";
+									echo "<div class='alert fresh-color alert-danger' role='alert'><strong>Maaf!</strong> Email & Password Salah.</div>";
 								} else if($_GET['alert']=="belum_login"){
 									echo "<div class='alert fresh-color alert-warning' role='alert'>Anda Harus Login Terlebih Dulu!</div>";
 								} else if($_GET['alert']=="logout"){
@@ -48,11 +51,11 @@
                                     Log In...
                                 </div>
                             </div>
-                            <form action="<?php echo base_url().'admin/Login/action'?>" method="post">
+                            <form action="<?php echo base_url().'Admin/Login/Action'?>" method="post">
                                 <div class="control">
-                                    <input type="text" class="form-control" placeholder="Username" name="username">
+                                    <input type="email" class="form-control" placeholder="Email" name="email">
                                 </div>
-								<?php echo form_error('username');?>
+								<?php echo form_error('email');?>
                                 <div class="control">
                                     <input type="password" class="form-control" placeholder="Password" name="password">
                                 </div>
