@@ -31,7 +31,7 @@ https://templatemo.com/tm-539-simple-house
 				<div class="tm-header">
 					<div class="row tm-header-inner">
 						<div class="col-md-6 col-12">
-							<img src="<?php echo base_url().'assets/public/img/logo/'.$config->logo; ?>" alt="Logo" class="tm-site-logo" /> 
+							<img src="<?php echo base_url().'assets/public/img/logo/'.$config->logo; ?>" width="96" alt="Logo" class="tm-site-logo" /> 
 							<div class="tm-site-text-box">
 								<h1 class="tm-site-title"><?php echo $config->app_name ?></h1>
 								<h6 class="tm-site-description"><?php echo $config->company ?></h6>	

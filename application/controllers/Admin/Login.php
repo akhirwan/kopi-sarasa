@@ -41,9 +41,9 @@ class Login extends CI_Controller {
 					'status' 	=> 'telah_login'
 				);
 				$this->session->set_userdata($data_session);
-				redirect(base_url().'Admin/Dashboard');
+				redirect(base_url().'manage-dashboard');
 			} else {
-				redirect(base_url().'Admin/Login?alert=gagal');
+				redirect(base_url().'author?alert=gagal');
 			}
 		} else {
 			$data['config']	= $this->Model_app->get_data('config_info')->row();
@@ -53,7 +53,7 @@ class Login extends CI_Controller {
 	
 	public function Logout(){
 		$this->session->sess_destroy();
-		redirect(base_url().'Admin/Login?alert=logout');
+		redirect(base_url().'author?alert=logout');
 	}
 }
 

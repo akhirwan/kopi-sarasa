@@ -47,6 +47,7 @@
                         <a href="<?php echo $config->link_fb ?>" class="tm-social-link"><i class="fab fa-facebook tm-social-icon"></i></a>
                         <a href="<?php echo $config->link_tw ?>" class="tm-social-link"><i class="fab fa-twitter tm-social-icon"></i></a>
                         <a href="<?php echo $config->link_ig ?>" class="tm-social-link"><i class="fab fa-instagram tm-social-icon"></i></a>
+                        <a href="<?php echo $config->link_yt ?>" class="tm-social-link"><i class="fab fa-youtube tm-social-icon"></i></a>
                     </div>
                 </div>
             </div>
@@ -63,8 +64,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="tm-map">
-                    <?php echo $config->map ?>   
-                    <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.706601335146!2d107.6342151142116!3d-6.9256321197116195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e7d87e72aefd%3A0xd2572025945d3808!2sTrans%20Studio%20Bandung!5e0!3m2!1sid!2sid!4v1615997938059!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe> -->
+                    <?php echo $config->map ?>
                 </div>
             </div>
         </div>
