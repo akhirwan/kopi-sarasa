@@ -57,8 +57,12 @@ $route['contact'] = 'Home/Contact';
 
 $route['author'] = 'Admin/Login';
 $route['author-logout'] = 'Admin/Login/Logout';
+
 $route['manage-dashboard'] = 'Admin/Dashboard';
 $route['manage-faq'] = 'Admin/Faq';
+
+$route['manage-items'] = 'Admin/Items';
+$route['manage-item/(:any)'] = 'Admin/Items/Write/$1';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

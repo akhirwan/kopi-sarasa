@@ -18,6 +18,8 @@ class Home extends CI_Controller {
 		$data['active_home'] = 'active';
 
 		$data['quotes'] = $this->db->query("SELECT * FROM quotes WHERE paging = 'home' AND is_active = 1")->result();
+		$data['categories'] = $this->Model_app->get_data('categories')->result(); 
+		$data['items'] = $this->Model_app->get_data('items')->result(); 
 		
 		$this->load->view('template/header', $data);
 		$this->load->view('public/home', $data);

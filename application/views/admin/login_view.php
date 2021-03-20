@@ -30,7 +30,7 @@
                 <div class="login-form row">
                     <div class="col-sm-12 text-center login-header">
                         <!-- <i class="login-logo fa fa-connectdevelop fa-5x"></i> -->
-                        <img src="<?php echo base_url().'assets/public/img/logo/'.$config->logo; ?>" alt="" srcset="">
+                        <img src="<?php echo base_url().'assets/public/img/logo/'.$config->logo; ?>" width="128" alt="" srcset="">
                         <h4 class="login-title"><?php echo $config->app_name ?></h4>
                     </div>
                     <div class="col-sm-12">

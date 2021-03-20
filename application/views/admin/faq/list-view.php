@@ -6,7 +6,7 @@
                 <i class="fa fa-plus-square"></i> Add FAQ
             </button>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewMsg">
-                <i class="fa fa-info-circle"></i> View Messages
+                <i class="fa fa-comments"></i> View Comments
             </button>
         </div>
         <?php $this->load->view('admin/faq/add-view');?>

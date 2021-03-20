@@ -139,7 +139,7 @@
 							<?php } ?>
                             <li>
                                 <a href="<?php echo base_url().'manage-items' ?>">
-                                    <span class="icon glyphicon glyphicon-cutlery"></span><span class="title">Items</span>
+                                    <span class="icon fa fa-cutlery"></span><span class="title">Items</span>
                                 </a>
                             </li>
                             <li>

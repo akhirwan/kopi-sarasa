@@ -6,7 +6,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel"><i class="fa fa-plus-info"></i> Data Pesan Masuk</h4>
+                <h4 class="modal-title" id="myModalLabel"><i class="fa fa-comments"></i> Data Komentar Masuk</h4>
             </div>
             <div class="modal-body">
                 <table class="datatable table table-striped" cellspacing="0" width="100%">
@@ -14,7 +14,7 @@
                         <tr>
                             <th width="5%">No</th>
                             <th>Sender</th>
-                            <th>Messages</th>
+                            <th>Comments</th>
                             <th width="15%">Actions</th>
                         </tr>
                     </thead>
@@ -22,7 +22,7 @@
                         <tr>
                             <th width="5%">No</th>
                             <th>Sender</th>
-                            <th>Messages</th>
+                            <th>Comments</th>
                             <th width="15%">Actions</th>
                         </tr>
                     </tfoot>

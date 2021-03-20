@@ -8,7 +8,7 @@
 							<i class="icon fa fa-newspaper-o fa-4x"></i>
 							<div class="content">
 								<div class="title"><?php //echo $sum_articles ?></div>
-								<div class="sub-title">Jumlah Item</div>
+								<div class="sub-title">Jumlah Artikel</div>
 							</div>
 							<div class="clear-both"></div>
 						</div>
@@ -19,10 +19,10 @@
 				<a href="<?php //echo base_url().'admin/categories' ?>">
 					<div class="card yellow summary-inline">
 						<div class="card-body">
-							<i class="icon fa fa-cubes fa-4x"></i>
+							<i class="icon fa fa-cutlery fa-4x"></i>
 							<div class="content">
 								<div class="title"><?php //echo $sum_categories ?></div>
-								<div class="sub-title">Jumlah Artikel</div>
+								<div class="sub-title">Jumlah Item</div>
 							</div>
 							<div class="clear-both"></div>
 						</div>
