@@ -126,7 +126,7 @@
                         </div>
                         <ul class="nav navbar-nav">
                             <li>
-                                <a href="<?php echo base_url().'Admin/Dashboard' ?>">
+                                <a href="<?php echo base_url().'manage-dashboard' ?>">
                                     <span class="icon fa fa-tachometer"></span><span class="title">Dashboard</span>
                                 </a>
                             </li>
@@ -136,25 +136,20 @@
                                     <span class="icon fa fa-question-circle"></span><span class="title">FAQ</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="<?php echo base_url().'admin/categories' ?>">
-                                    <span class="icon fa fa-cubes"></span><span class="title">Categories</span>
-                                </a>
-                            </li>
 							<?php } ?>
                             <li>
-                                <a href="<?php echo base_url().'admin/articles' ?>">
+                                <a href="<?php echo base_url().'manage-items' ?>">
+                                    <span class="icon glyphicon glyphicon-cutlery"></span><span class="title">Items</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?php echo base_url().'manage-articles' ?>">
                                     <span class="icon fa fa-newspaper-o"></span><span class="title">Articles</span>
                                 </a>
                             </li>
 							<?php if($this->session->userdata('level') == "admin"){ ?>
                             <li>
-                                <a href="<?php echo base_url().'admin/pages' ?>">
-                                    <span class="icon fa fa-tags"></span><span class="title">Pages</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="<?php echo base_url().'admin/users' ?>">
+                                <a href="<?php echo base_url().'manage-users' ?>">
                                     <span class="icon fa fa-users"></span><span class="title">Users and Role</span>
                                 </a>
                             </li>

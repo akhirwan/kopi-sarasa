@@ -6,7 +6,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">Tambah FAQ</h4>
+                <h4 class="modal-title" id="myModalLabel"><i class="fa fa-plus-square"></i> Tambah FAQ</h4>
             </div>
             <?php echo form_open_multipart('Admin/Faq/Insert');?>
                 <div class="modal-body">
