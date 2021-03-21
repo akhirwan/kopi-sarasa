@@ -1,7 +1,7 @@
 		<footer class="tm-footer text-center">
-			<p>Copyright &copy; 2020 Simple House 
+			<p>Copyright &copy; 2021 <a href="https://akhirwan.github.io/">akhirwan.github.io</a> 
             
-            | Design: <a rel="nofollow" href="https://templatemo.com">TemplateMo</a></p>
+            | Design: <a rel="nofollow" href="#">TemplateMo</a></p>
 		</footer>
 	</div>
 	<script src="<?php echo base_url('assets/public/js/jquery.min.js')?>"></script>

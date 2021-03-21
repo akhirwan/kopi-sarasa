@@ -60,9 +60,16 @@ $route['author-logout'] = 'Admin/Login/Logout';
 
 $route['manage-dashboard'] = 'Admin/Dashboard';
 $route['manage-faq'] = 'Admin/Faq';
+$route['manage-info'] = 'Admin/Dashboard/Config';
 
 $route['manage-items'] = 'Admin/Items';
 $route['manage-item/(:any)'] = 'Admin/Items/Write/$1';
+$route['manage-categories'] = 'Admin/Categories';
+
+$route['manage-users'] = 'Admin/Users';
+$route['manage-user-info/(:any)'] = 'Admin/Users/WriteInfo/$1';
+$route['manage-user-upload/(:any)'] = 'Admin/Users/UploadImage/$1';
+$route['manage-user-role/(:any)'] = 'Admin/Users/WriteRole/$1';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

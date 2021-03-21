@@ -90,7 +90,7 @@
                             </ul>
                         </li>
                         <li class="dropdown profile">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $this->session->userdata('username') ?> <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo $this->session->userdata('name') ?> <span class="caret"></span></a>
                             <ul class="dropdown-menu animated fadeInDown">
                                 <li class="profile-img">
                                     <img src="<?php echo base_url('assets/admin/img/profile/picjumbo.com_HNCK4153_resize.jpg')?>" class="profile-img">
@@ -130,16 +130,19 @@
                                     <span class="icon fa fa-tachometer"></span><span class="title">Dashboard</span>
                                 </a>
                             </li>
-							<?php if($this->session->userdata('level') == "admin"){ ?>
                             <li>
                                 <a href="<?php echo base_url().'manage-faq' ?>">
                                     <span class="icon fa fa-question-circle"></span><span class="title">FAQ</span>
                                 </a>
                             </li>
-							<?php } ?>
                             <li>
                                 <a href="<?php echo base_url().'manage-items' ?>">
                                     <span class="icon fa fa-cutlery"></span><span class="title">Items</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="<?php echo base_url().'manage-categories' ?>">
+                                    <span class="icon fa fa-cubes"></span><span class="title">Categories</span>
                                 </a>
                             </li>
                             <li>
@@ -154,7 +157,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="<?php echo base_url().'admin/dashboard/config' ?>">
+                                <a href="<?php echo base_url().'manage-info' ?>">
                                     <span class="icon fa fa-cog"></span><span class="title">Configurations</span>
                                 </a>
                             </li>

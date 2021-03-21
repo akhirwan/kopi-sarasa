@@ -18,7 +18,7 @@ class Faq extends CI_Controller {
     $data['messages'] = $this->Model_app->get_data('messages')->result();
         
     $this->load->view('admin/template/header', $data);
-    $this->load->view('admin/faq/list-view', $data);
+    $this->load->view('admin/faq/list_view', $data);
     $this->load->view('admin/template/footer');
   }
 

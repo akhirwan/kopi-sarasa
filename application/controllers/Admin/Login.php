@@ -21,20 +21,23 @@ class Login extends CI_Controller {
 			$email = $this->input->post('email');
 			$password = $this->input->post('password');
 			$where = [
-				'email' 	=> $email,
+				'username' 	=> $email,
 				'password' 	=> md5($password),
 				'is_active'	=> 1
 			];
 
 			$this->load->model('Model_app');
-			$cek = $this->Model_app->cek_login('user',$where)->num_rows();
-			if($cek > 0) {
-				$data = $this->Model_app->cek_login('user',$where)->row();
+			$cek = $this->Model_app->cek_login('credential',$where)->row();
+
+			if($cek->xid) {
+				// var_dump($cek);die;
+				$check['uid'] = $cek->xid; 
+				$data = $this->Model_app->cek_login('user',$check)->row();
 				$data_session = array(
 					'uid'		=> $data->uid,
 					'username'	=> $data->username,
 					'name'		=> $data->name,
-					'level'		=> $data->level,
+					'level'		=> $cek->level,
 					'address'	=> $data->address,
 					'email'		=> $data->email,
 					'phone'		=> $data->phone,

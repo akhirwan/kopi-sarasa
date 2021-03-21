@@ -1,3 +1,4 @@
+<?php $getId = (isset($id)) ? $id : '';?>
 <!-- Main Content -->
 <div class="container-fluid">
     <div class="side-body">
@@ -16,7 +17,7 @@
                     <div class="card-body">
                         <?php echo form_open_multipart('Admin/Items/Action');?>
                         <div class="form-horizontal">
-                            <input type="hidden" name="id" value="<?php echo $id;?>">
+                            <input type="hidden" name="id" value="<?php echo $getId;?>">
                             <div class="form-group">
                                 <label for="code" class="col-sm-2 control-label">Code</label>
                                 <div class="col-sm-10">
@@ -38,12 +39,18 @@
                             <div class="form-group">
                                 <label for="category" class="col-sm-2 control-label">Category</label>
                                 <div class="col-sm-10">
-                                    <select class="form-control" name="category" id="category">
-                                    <?php foreach($categories as $cat){?>
-                                        <option <?php if(set_value('category') == $cat->id){echo "selected='selected'";}?> value="<?php echo $cat->id; ?>">
-                                            <?php echo $cat->name; ?>
+                                    <select class="form-control" name="category" id="category">  
+                                        <option value="<?php echo $category?>">
+                                        <?php foreach($categories as $cat){
+                                            if ($cat->id == $category)
+                                                echo $cat->name;
+                                        }?>
                                         </option>
-                                    <?php } ?>
+                                        <?php foreach($categories as $cat){?>
+                                            <option <?php if(set_value('category') == $cat->id){echo "selected='selected'";}?> value="<?php echo $cat->id; ?>">
+                                                <?php echo $cat->name; ?>
+                                            </option>
+                                        <?php } ?>
                                     </select>
                                 </div>
                             </div>

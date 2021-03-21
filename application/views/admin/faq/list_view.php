@@ -9,8 +9,8 @@
                 <i class="fa fa-comments"></i> View Comments
             </button>
         </div>
-        <?php $this->load->view('admin/faq/add-view');?>
-        <?php $this->load->view('admin/faq/list-msg-view');?>
+        <?php $this->load->view('admin/faq/add_view');?>
+        <?php $this->load->view('admin/faq/list_msg_view');?>
         <div class="row">
             <div class="col-xs-12">
                 <div class="card fresh-color card-success">

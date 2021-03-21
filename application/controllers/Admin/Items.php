@@ -31,7 +31,6 @@ class Items extends CI_Controller {
         $data['categories'] = $this->Model_app->get_data('categories')->result();
 
         if($id == 0){
-            $data['code'] = 0;
             $data['code'] = 'ITEM-'.time();
             $data['name'] = '';
             $data['price'] = '';
@@ -80,13 +79,12 @@ class Items extends CI_Controller {
             $config['allowed_types']        = 'gif|jpg|png';
             $config['file_name']            = $_FILES['picture']['name'];
             $config['overwrite']			= true;
-            // $config['max_size']             = 1024;
             
-            // var_dump($config);die;
             $this->load->library('upload', $config);
             if($this->upload->do_upload('picture')){
                 $gambar = $this->upload->data();
-                $picture 	= $gambar['file_name'];
+                $picture = $gambar['file_name'];
+                // $data['items'] = $this->Model_app->edit_data($where, 'items')->result();
                 $this->db->query("UPDATE items SET picture = '$picture' WHERE id = $id");
             }
         }

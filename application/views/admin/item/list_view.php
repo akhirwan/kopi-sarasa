@@ -3,17 +3,12 @@
     <div class="side-body">
         <div class="page-title">
             <a href="<?php echo base_url().'manage-item/0' ?>" class="btn btn-info">
-                <i class="fa fa-cutlery"></i> Add Items
+                <i class="fa fa-plus-square"></i> Add Items
             </a>
-            <!-- <button type="button" class="btn btn-info" data-toggle="modal" data-target="#addFAQ">
-                <i class="fa fa-cutlery"></i> Add Items
-            </button> -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewMsg">
-                <i class="fa fa-cubes"></i> Categories
-            </button>
+            <a href="<?php echo base_url().'manage-categories' ?>" class="btn btn-primary">
+                <i class="fa fa-cubes"></i> Go to Categories
+            </a>
         </div>
-        <?php //$this->load->view('admin/faq/add-view');?>
-        <?php //$this->load->view('admin/faq/list-msg-view');?>
         <div class="row">
             <div class="col-xs-12">
                 <div class="card fresh-color card-success">
@@ -53,7 +48,7 @@
                                 if($item->picture){
                                     $pic = base_url().'assets/public/img/items/'.$item->picture;
                                 } else {
-                                    $pic = base_url().'assets/public/img/items/default/defult.png';
+                                    $pic = base_url().'assets/public/img/default/default.png';
                                 }
                             ?>
                                 <tr>
@@ -87,7 +82,7 @@
                                     </td>
                                 </tr>
                                 
-                                <!-- Edit -->
+                                <!-- Preview -->
                                 <div class="modal fade modal-default" id="detail<?php echo (string)$item->id;?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -97,7 +92,7 @@
                                                 </button>
                                                 <h4 class="modal-title" id="myModalLabel">Detail : <?php echo $item->name;?></h4>  
                                             </div>
-                                            <div class="modal-body">                                                
+                                            <div class="modal-body">
                                                 <ul class="list-group">
                                                     <li class="list-group-item"><img src="<?php echo $pic;?>" width="128" alt="" sizes="" srcset=""></li>
                                                     <li class="list-group-item"><b>Code : </b> <?php echo $item->code;?></li>

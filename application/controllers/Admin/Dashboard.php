@@ -21,6 +21,17 @@ class Dashboard extends CI_Controller {
 		$this->load->view('admin/template/footer');
     }
 
+    public function Config() {
+		$data['config']	= $this->Model_app->get_data('config_info')->row();
+		$data['title'] = 'Dashboard';
+
+		$data['configure'] = $this->Model_app->get_data('config_info')->result();
+        
+		$this->load->view('admin/template/header', $data);
+		$this->load->view('admin/dashboard/web_info', $data);
+		$this->load->view('admin/template/footer');
+    }
+
 	public function Update() {
 		$this->form_validation->set_rules('app_name','Nama Website','required');
 
@@ -57,16 +68,9 @@ class Dashboard extends CI_Controller {
 				}
 			}
 
-			redirect(base_url().'manage-dashboard?alert=sukses');
+			redirect(base_url().'manage-info?alert=sukses');
 		} else {
-			$data['config']	= $this->Model_app->get_data('config_info')->row();
-			$data['title'] = 'Dashboard';
-
-			$data['configure'] = $this->Model_app->get_data('config_info')->result();
-			
-			$this->load->view('admin/template/header', $data);
-			$this->load->view('admin/dashboard/index', $data);
-			$this->load->view('admin/template/footer');
+			redirect(base_url().'manage-info');
 		}
 	}
 }
