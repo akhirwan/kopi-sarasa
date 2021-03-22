@@ -65,6 +65,7 @@
                                 <div class="col-sm-10">
                                     <input type="file" class="form-control" id="picture" name="picture">
                                     <img src="<?php echo 'assets/public/img/items/'.$picture;?>" alt="" srcset="">
+                                    <small>Ukuran 250 x 250</small>
                                 </div>
                             </div>
                             <div class="form-group">

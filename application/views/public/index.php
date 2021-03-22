@@ -9,11 +9,11 @@
         <nav>
             <ul>
                 <li class="tm-paging-item">
-                    <a href="<?php echo base_url();?>" class="tm-paging-link <?php if(count($page) < 4) echo 'active';?>">All Menus</a>
+                    <a href="<?php echo base_url();?>" class="tm-paging-link active">All Menus</a>
                 </li>
                 <?php foreach($categories as $cat){ ?>
                     <li class="tm-paging-item">
-                        <a href="<?php echo base_url().'home/'.$cat->id;?>" class="tm-paging-link <?php if($page[4] == $cat->id) echo 'active';?>">
+                        <a href="<?php echo base_url().'home/'.$cat->id;?>" class="tm-paging-link">
                             <?php echo $cat->name;?>
                         </a>
                     </li>
@@ -23,7 +23,7 @@
     </div>
 
     <!-- Gallery -->
-    <div class="row tm-gallery" id="gallery" tabindex="-1" style="outline: 0;">
+    <div class="row tm-gallery">
         <!-- gallery page 1 -->
         <div id="tm-gallery-page-pizza" class="tm-gallery-page">
             <?php foreach($items as $item){?>

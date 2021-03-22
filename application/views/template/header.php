@@ -40,8 +40,8 @@ https://templatemo.com/tm-539-simple-house
 						<nav class="col-md-6 col-12 tm-nav">
 							<ul class="tm-nav-ul">
 								<li class="tm-nav-li"><a href="<?php echo base_url();?>" class="tm-nav-link <?php if(isset($active_home)){echo $active_home ;}?>">Home</a></li>
-								<li class="tm-nav-li"><a href="<?php echo base_url('about');?>" class="tm-nav-link <?php if(isset($active_about)){echo $active_about ;}?>">About</a></li>
-								<li class="tm-nav-li"><a href="<?php echo base_url('contact');?>" class="tm-nav-link <?php if(isset($active_contact)){echo $active_contact ;}?>">Contact</a></li>
+								<li class="tm-nav-li"><a href="<?php echo base_url().'about';?>" class="tm-nav-link <?php if(isset($active_about)){echo $active_about ;}?>">About</a></li>
+								<li class="tm-nav-li"><a href="<?php echo base_url().'contact';?>" class="tm-nav-link <?php if(isset($active_contact)){echo $active_contact ;}?>">Contact</a></li>
 							</ul>
 						</nav>	
 					</div>

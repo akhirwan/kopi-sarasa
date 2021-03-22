@@ -90,7 +90,6 @@
                                     <a href="<?php echo base_url().'manage-users' ?>" class="btn btn-default">Cancel</a>
                                     <input type="submit" class="btn btn-success" name="submit" value="Submit">
                                     <input type="submit" class="btn btn-success" name="submit" value="Submit and Upload Image">
-                                    <input type="submit" class="btn btn-success" name="submit" value="Submit and Set Credential">
                                 </div>
                             </div>
                         </div>                        

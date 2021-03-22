@@ -60,19 +60,6 @@ class Items extends CI_Controller {
         $data['category'] = $this->input->post('category');
         $data['description'] = $this->input->post('description');
         $data['is_active'] = 1;
-
-        if($id == 0){
-            $data['created_at'] = time();
-            $data['created_by'] = $this->session->userdata('email');
-            $data['modified_at'] = time();
-            $data['modified_by'] = $this->session->userdata('email');
-            $data['picture'] = '';
-            $this->Model_app->insert_data($data, 'items');
-        } else {
-            $data['modified_at'] = time();
-            $data['modified_by'] = $this->session->userdata('email');
-            $this->Model_app->update_data(['id' => $id],$data,'items');
-        }
         
         if(!empty($_FILES['picture']['name'])){
             $config['upload_path']          = './assets/public/img/items/';
@@ -85,8 +72,22 @@ class Items extends CI_Controller {
                 $gambar = $this->upload->data();
                 $picture = $gambar['file_name'];
                 // $data['items'] = $this->Model_app->edit_data($where, 'items')->result();
-                $this->db->query("UPDATE items SET picture = '$picture' WHERE id = $id");
+                // $this->db->query("UPDATE items SET picture = '$picture' WHERE id = $id");
             }
+        }
+
+        if($id == 0){
+            $data['created_at'] = time();
+            $data['created_by'] = $this->session->userdata('email');
+            $data['modified_at'] = time();
+            $data['modified_by'] = $this->session->userdata('email');
+            $data['picture'] = $picture;
+            $this->Model_app->insert_data($data, 'items');
+        } else {
+            $data['modified_at'] = time();
+            $data['modified_by'] = $this->session->userdata('email');
+            $data['picture'] = $picture;
+            $this->Model_app->update_data(['id' => $id], $data, 'items');
         }
 
         redirect(base_url().'manage-items?alert=sukses');                                                         

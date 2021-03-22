@@ -62,7 +62,14 @@ class Users extends CI_Controller {
     public function ActionInfo(){
         $id = $this->input->post('id');
 
-        $goId = $this->Model_app->edit_data(['email' => $this->input->post('email')], 'user')->result();
+        $checkEmail = $this->Model_app->edit_data(['email' => $this->input->post('email')], 'user')->result();
+        if(count($checkEmail) > 0){
+            if($id > 0){
+                redirect(base_url().'manage-user-info/'.$id.'?alert=email_is_used');
+            }else{
+                redirect(base_url().'manage-user-info/0?alert=email_is_used');
+            }
+        }
 
         $goto = $this->input->post('submit');
 
@@ -82,9 +89,7 @@ class Users extends CI_Controller {
         $data['picture'] = '';
 
         if($id == 0){
-            if(count($goId) > 0){
-                redirect(base_url().'manage-user-info/'.$id.'?alert=email_is_used');
-            }
+            $data['is_active'] = 1;
             $data['created_at'] = time();
             $data['created_by'] = $this->session->userdata('email');
             $data['modified_at'] = time();
@@ -96,12 +101,32 @@ class Users extends CI_Controller {
             $this->Model_app->update_data(['uid' => $id],$data,'user');
         }
 
+        $goId = $this->Model_app->edit_data(['email' => $this->input->post('email')], 'user')->result();
+        // var_dump($goId[0]);exit;
+
+        if($id == 0){
+            $credential = [
+                'xid' => $goId[0]->uid,
+                'username' => $goId[0]->email,
+                'password' => md5('kopi_rahasia'),
+                'level' => 'user',
+                'token' => '',
+                'is_active' => 1,
+            ];
+
+            $this->Model_app->insert_data($credential, 'credential');
+        }else{
+            $credential['username'] = $goId[0]->email;
+
+            $this->Model_app->update_data(['xid' => $id], $credential,'credential');
+        }
+
         if($goto == 'Submit'){
             redirect(base_url().'manage-users');
         }elseif($goto == 'Submit and Upload Image'){
-            redirect(base_url().'manage-user-upload/'.$goId['uid']);
+            redirect(base_url().'manage-user-upload/'.$goId[0]->uid);
         }else{
-            redirect(base_url().'manage-user-role/'.$goId['uid']);
+            redirect(base_url().'manage-user-role/'.$goId[0]->uid);
         }
     }
 
@@ -121,7 +146,9 @@ class Users extends CI_Controller {
 
     public function ActionUpload(){
         $goId = $this->Model_app->edit_data(['uid' => $this->input->post('id')], 'user')->result();
-        // var_dump($_FILES);die;
+        
+        $modifiedAt = time();
+        $modifiedBy = $this->session->userdata('email');
 
         if(!$goId) 
             redirect(base_url().'manage-users?alert=id_not_found');
@@ -139,7 +166,7 @@ class Users extends CI_Controller {
                 $gambar = $this->upload->data();
                 $picture = $gambar['file_name'];
                 
-                $this->db->query("UPDATE user SET picture = '$picture' WHERE uid = $id");
+                $this->db->query("UPDATE user SET picture = '$picture', modified_at = '$modifiedAt', modified_by = '$modifiedBy' WHERE uid = $id");
             }
         }
 
@@ -155,11 +182,6 @@ class Users extends CI_Controller {
     public function WriteRole($id){
         $data['config']	= $this->Model_app->get_data('config_info')->row();
         $data['title'] = 'Users';
-
-        $data['users'] = $this->Model_app->edit_data(['uid' => $id], 'user')->result();
-
-        if(!$data['users']) 
-            redirect(base_url().'manage-users?alert=id_not_found');
         
         $data['credential'] = $this->Model_app->edit_data(['xid' => $id], 'credential')->result();
 
@@ -168,8 +190,44 @@ class Users extends CI_Controller {
         $this->load->view('admin/template/footer');
     }
 
+    public function ActionRole(){
+        $where = ['xid' => $this->input->post('id')];
+
+        $data['username'] = $this->input->post('username');
+        $data['level'] = $this->input->post('level');
+
+        if($this->input->post('password')) $data['password'] = $this->input->post('password');
+
+        $this->Model_app->update_data($where, $data, 'credential');
+        redirect(base_url().'manage-users');
+    }
+
+    public function Active() {
+        $where = ['uid' => $this->input->post('id')];
+        
+        if($this->input->post('is_active') == "Aktif"){
+            $data['modified_at'] = time();
+            $data['modified_by'] = $this->session->userdata('email');
+            $data['is_active'] = 0;
+        } else {
+            $data['modified_at'] = time();
+            $data['modified_by'] = $this->session->userdata('email');
+            $data['is_active'] = 1;
+        }
+    
+        $data['modified_at'] = time();
+    
+        $this->Model_app->update_data($where, $data, 'user');
+
+        $check = $this->Model_app->edit_data(['xid' => $this->input->post('id')], 'credential');
+        if ($check) $this->Model_app->update_data(['xid' => $this->input->post('id')], ['is_active' => $data['is_active']], 'credential');
+    
+        redirect(base_url().'manage-users?alert=sukses');
+    }
+
     public function Delete($id) {
         $this->Model_app->delete_data(['uid' => $id],'user');
+        $this->Model_app->delete_data(['xid' => $id],'credential');
         redirect(base_url().'manage-users?alert=sukses');
     }
 }

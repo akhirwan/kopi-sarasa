@@ -18,8 +18,27 @@ class Home extends CI_Controller {
 		$data['active_home'] = 'active';
 
 		$data['quotes'] = $this->db->query("SELECT * FROM quotes WHERE paging = 'home' AND is_active = 1")->result();
-		$data['categories'] = $this->Model_app->get_data('categories')->result(); 
-		$data['items'] = $this->Model_app->get_data('items')->result(); 
+		$data['categories'] = $this->Model_app->edit_data(['is_active' => 1], 'categories')->result(); 
+
+		$data['items'] = $this->Model_app->edit_data(['is_active' => 1], 'items')->result(); 
+		
+		$this->load->view('template/header', $data);
+		$this->load->view('public/index', $data);
+		$this->load->view('template/footer', $data);
+	}
+
+	public function Home($id)	{
+		$data['config']	= $this->Model_app->get_data('config_info')->row();
+
+		$data['title'] = 'Home';
+		$data['meta_keyword'] = $data['config']->app_name;
+		$data['meta_description'] = $data['config']->company;
+		$data['active_home'] = 'active';
+
+		$data['quotes'] = $this->db->query("SELECT * FROM quotes WHERE paging = 'home' AND is_active = 1")->result();
+		$data['categories'] = $this->Model_app->edit_data(['is_active' => 1], 'categories')->result(); 
+		
+		$data['items'] = $this->Model_app->edit_data(['is_active' => 1, 'category' => $id], 'items')->result(); 
 		
 		$this->load->view('template/header', $data);
 		$this->load->view('public/home', $data);
@@ -35,6 +54,7 @@ class Home extends CI_Controller {
 		$data['active_about'] = 'active';
 
 		$data['quotes'] = $this->db->query("SELECT * FROM quotes WHERE paging = 'about' AND is_active = 1")->result();
+		$data['users'] = $this->Model_app->edit_data(['is_active' => 1], 'user')->result();
 		
 		$this->load->view('template/header', $data);
 		$this->load->view('public/about', $data);

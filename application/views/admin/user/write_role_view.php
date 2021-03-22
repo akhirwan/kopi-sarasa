@@ -16,44 +16,39 @@
                     <div class="card-body">
                         <?php echo form_open_multipart('Admin/Users/ActionRole');?>
                         <div class="form-horizontal">
-                            <input type="hidden" name="id" value="<?php echo $users[0]->uid;?>">
+                            <input type="hidden" name="id" value="<?php echo $credential[0]->xid;?>">
                             <div class="form-group">
                                 <label for="name" class="col-sm-2 control-label">Email</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="email" name="email" value="<?php echo $users[0]->email;?>" readonly>
+                                    <input type="text" class="form-control" id="username" name="username" value="<?php echo $credential[0]->username;?>" readonly>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="name" class="col-sm-2 control-label">Password</label>
                                 <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="email" name="email">
+                                    <input type="password" class="form-control" id="password" name="password">
                                     <small>kosongkan jika tidak ada perubahan</small>
                                 </div>
                             </div>
+                            <!-- <div class="form-group">
+                                <label for="name" class="col-sm-2 control-label">Re-Type Password</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" id="re-password" name="re-password">
+                                    <small>kosongkan jika tidak ada perubahan</small>
+                                </div>
+                            </div> -->
                             <div class="form-group">
                                 <label for="name" class="col-sm-2 control-label">Role</label>
                                 <div class="col-sm-10">
                                     <select class="form-control" name="level" id="level">
-                                        <option value="admin">Adminstrator</option>
-                                        <option value="user">User</option>
+                                    <?php if($credential[0]->level == 'user') {
+                                        echo '<option value="user" selected>User</option>';
+                                        echo '<option value="admin">Adminstrator</option>';
+                                    } else {
+                                        echo '<option value="admin" selected>Adminstrator</option>';
+                                        echo '<option value="user">User</option>';
+                                    }?> 
                                     </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="name" class="col-sm-2 control-label">Status</label>
-                                <div class="col-sm-10">
-                                    <div class="radio3 radio-check radio-success radio-inline">
-                                        <input type="radio" id="radio4" name="status" value="1" checked="">
-                                        <label for="radio4">
-                                            Aktif
-                                        </label>
-                                    </div>
-                                    <div class="radio3 radio-check radio-danger radio-inline">
-                                        <input type="radio" id="radio5" name="status" value="0">
-                                        <label for="radio5">
-                                            Tidak Aktif
-                                        </label>
-                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">

@@ -1,6 +1,6 @@
 <?php 
-    $quo_c = (isset($quo_contact[0]->quote)) ? $quo_contact[0]->quote : 'empty quote'; 
-    $quo_f = (isset($quo_faq[0]->quote)) ? $quo_faq[0]->quote : 'empty quote'; 
+    $quo_c = (isset($quo_contact[0]->quote)) ? $quo_contact[0]->quote : ' '; 
+    $quo_f = (isset($quo_faq[0]->quote)) ? $quo_faq[0]->quote : ' '; 
 ?>
 <main>
     <header class="row tm-welcome-section">

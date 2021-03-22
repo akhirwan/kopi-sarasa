@@ -1,4 +1,4 @@
-<?php $quo = (isset($quotes[0]->quote)) ? $quotes[0]->quote : 'empty quote'; ?>
+<?php $quo = (isset($quotes[0]->quote)) ? $quotes[0]->quote : ''; ?>
 <main>
     <header class="row tm-welcome-section">
         <h2 class="col-12 text-center tm-section-title">About <?php echo $config->app_name ?></h2>
@@ -7,70 +7,24 @@
 
     <div class="tm-container-inner tm-persons">
         <div class="row">
+        <?php foreach($users as $user){?>
             <article class="col-lg-6">
                 <figure class="tm-person">
-                    <img src="<?php echo base_url('assets/public/img/about-01.jpg')?>" alt="Image" class="img-fluid tm-person-img" />
+                    <img src="<?php echo base_url('assets/public/img/users/'.$user->picture)?>" alt="Image" class="img-fluid tm-person-img" />
                     <figcaption class="tm-person-description">
-                        <h4 class="tm-person-name">Jennifer Soft</h4>
-                        <p class="tm-person-title">Founder and CEO</p>
-                        <p class="tm-person-about">Vivamus cursus leo nec sem feugiat sagittis.
-                        Duis ut feugiat odio, sit amet accumsan
-                        odio.</p>
+                        <h4 class="tm-person-name"><?php echo $user->name;?></h4>
+                        <p class="tm-person-title"><?php echo $user->job_position;?></p>
+                        <p class="tm-person-about"><?php echo $user->job_desc;?></p>
                         <div>
-                            <a href="https://fb.com" class="tm-social-link"><i class="fab fa-facebook tm-social-icon"></i></a>
-                            <a href="https://twitter.com" class="tm-social-link"><i class="fab fa-twitter tm-social-icon"></i></a>
-                            <a href="https://instagram.com" class="tm-social-link"><i class="fab fa-instagram tm-social-icon"></i></a>
+                            <a href="<?php echo $user->link_fb;?>" class="tm-social-link"><i class="fab fa-facebook tm-social-icon"></i></a>
+                            <a href="<?php echo $user->link_tw;?>" class="tm-social-link"><i class="fab fa-twitter tm-social-icon"></i></a>
+                            <a href="<?php echo $user->link_ig;?>" class="tm-social-link"><i class="fab fa-instagram tm-social-icon"></i></a>
+                            <a href="<?php echo $user->link_yt;?>" class="tm-social-link"><i class="fab fa-youtube tm-social-icon"></i></a>
                         </div>
                     </figcaption>
                 </figure>
             </article>
-            <article class="col-lg-6">
-                <figure class="tm-person">
-                    <img src="<?php echo base_url('assets/public/img/about-02.jpg')?>" alt="Image" class="img-fluid tm-person-img" />
-                    <figcaption class="tm-person-description">
-                        <h4 class="tm-person-name">Daisy Walker</h4>
-                        <p class="tm-person-title">Executive Chef</p>
-                        <p class="tm-person-about">Praesent non vulputate elit. Orci varius
-                        natoque et magnis dis parturient, nascetur ridiculus mus.</p>
-                        <div>
-                            <a href="https://fb.com" class="tm-social-link"><i class="fab fa-facebook tm-social-icon"></i></a>
-                            <a href="https://twitter.com" class="tm-social-link"><i class="fab fa-twitter tm-social-icon"></i></a>
-                        </div>
-                    </figcaption>
-                </figure>
-            </article>
-            <article class="col-lg-6">
-                <figure class="tm-person">
-                    <img src="<?php echo base_url('assets/public/img/about-03.jpg')?>" alt="Image" class="img-fluid tm-person-img" />
-                    <figcaption class="tm-person-description">
-                        <h4 class="tm-person-name">Florence Nelson</h4>
-                        <p class="tm-person-title">Kitchen Manager</p>
-                        <p class="tm-person-about">Aenean sapien sem, ultricies sed vulputate
-                        et, auctor vel mauris. Integer sit amet diam eget est facilisis lacinia vitae.</p>
-                        <div>
-                            <a href="https://fb.com" class="tm-social-link"><i class="fab fa-facebook tm-social-icon"></i></a>
-                            <a href="https://instagram.com" class="tm-social-link"><i class="fab fa-instagram tm-social-icon"></i></a>
-                        </div>
-                    </figcaption>
-                </figure>
-            </article>
-            <article class="col-lg-6">
-                <figure class="tm-person">
-                    <img src="<?php echo base_url('assets/public/img/about-04.jpg')?>" alt="Image" class="img-fluid tm-person-img" />
-                    <figcaption class="tm-person-description">
-                        <h4 class="tm-person-name">Valentina Martin</h4>
-                        <p class="tm-person-title">Culinary Director</p>
-                        <p class="tm-person-about">Praesent non vulputate elit. Orci varius
-                        natoque penatibus et magnis montes, nascetur ridiculus mus.</p>
-                        <div>
-                            <a href="https://fb.com" class="tm-social-link"><i class="fab fa-facebook tm-social-icon"></i></a>
-                            <a href="https://twitter.com" class="tm-social-link"><i class="fab fa-twitter tm-social-icon"></i></a>
-                            <a href="https://instagram.com" class="tm-social-link"><i class="fab fa-instagram tm-social-icon"></i></a>
-                            <a href="https://youtube.com" class="tm-social-link"><i class="fab fa-youtube tm-social-icon"></i></a>
-                        </div>
-                    </figcaption>
-                </figure>
-            </article>
+        <?php } ?>
         </div>
     </div>
     <div class="tm-container-inner tm-featured-image">
