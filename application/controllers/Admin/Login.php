@@ -35,7 +35,7 @@ class Login extends CI_Controller {
 				$data = $this->Model_app->cek_login('user',$check)->row();
 				$data_session = array(
 					'uid'		=> $data->uid,
-					'username'	=> $data->username,
+					// 'username'	=> $data->username,
 					'name'		=> $data->name,
 					'level'		=> $cek->level,
 					'address'	=> $data->address,

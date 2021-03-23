@@ -1,4 +1,4 @@
-<?php $quo = (isset($quotes[0]->quote)) ? $quotes[0]->quote : ' '; $page = explode('/',$_SERVER['PHP_SELF']);?>
+<?php $quo = (isset($quotes[0]->quote)) ? $quotes[0]->quote : ' '; $page = explode('/',$_SERVER['REQUEST_URI']);?>
 <main>
     <header class="row tm-welcome-section">
         <h2 class="col-12 text-center tm-section-title">Welcome to <?php echo $config->app_name ?></h2>
@@ -13,7 +13,7 @@
                 </li>
                 <?php foreach($categories as $cat){ ?>
                     <li class="tm-paging-item">
-                        <a href="<?php echo base_url().'home/'.$cat->id;?>" class="tm-paging-link <?php if($page[4] == $cat->id) echo 'active';?>">
+                        <a href="<?php echo base_url().'home/'.$cat->id;?>" class="tm-paging-link <?php if($page[3] == $cat->id) echo 'active';?>">
                             <?php echo $cat->name;?>
                         </a>
                     </li>

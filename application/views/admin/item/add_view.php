@@ -27,13 +27,13 @@
                             <div class="form-group">
                                 <label for="name" class="col-sm-2 control-label">Name</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="name" name="name" value="<?php echo $name;?>">
+                                    <input type="text" class="form-control" id="name" name="name" value="<?php echo $name;?>" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="price" class="col-sm-2 control-label">Price</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="price" name="price" value="<?php echo $price;?>">
+                                    <input type="text" class="form-control" id="price" name="price" value="<?php echo $price;?>" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -57,7 +57,7 @@
                             <div class="form-group">
                                 <label for="description" class="col-sm-2 control-label">Description</label>
                                 <div class="col-sm-10">
-                                    <textarea class="form-control" id="description" name="description" rows="3"><?php echo $description;?></textarea>
+                                    <textarea class="form-control" id="description" name="description" rows="3" required><?php echo $description;?></textarea>
                                 </div>
                             </div>
                             <div class="form-group">

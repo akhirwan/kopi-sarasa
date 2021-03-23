@@ -72,5 +72,8 @@ $route['manage-user-info/(:any)'] = 'Admin/Users/WriteInfo/$1';
 $route['manage-user-upload/(:any)'] = 'Admin/Users/UploadImage/$1';
 $route['manage-user-role/(:any)'] = 'Admin/Users/WriteRole/$1';
 
+$route['manage-articles'] = 'Admin/Articles';
+$route['manage-article/(:any)'] = 'Admin/Articles/Write/$1';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
