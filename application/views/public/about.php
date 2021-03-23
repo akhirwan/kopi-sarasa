@@ -36,6 +36,10 @@
             </div>
         </div>
     </div>
+    <header class="row tm-welcome-section">
+        <h2 class="col-12 text-center tm-section-title">News and Event</h2>
+        <!-- <p class="col-12 text-center"><?php //echo $quo_c; ?></p> -->
+    </header>
     <div class="tm-container-inner tm-features">
         <div class="row">
             <div class="col-lg-4">

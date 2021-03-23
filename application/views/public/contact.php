@@ -13,7 +13,7 @@
             <div class="col-md-6">
                 <form action="<?php echo base_url('Home/Message');?>" method="POST" class="tm-contact-form">
                     <div class="form-group">
-                        <input type="text" name="name" class="form-control" placeholder="Name" required="" />
+                        <input type="text" name="name" class="form-control" placeholder="Nama" required="" />
                     </div>
                     
                     <div class="form-group">
@@ -21,7 +21,7 @@
                     </div>
         
                     <div class="form-group">
-                        <textarea rows="5" name="message" class="form-control" placeholder="Message" required=""></textarea>
+                        <textarea rows="5" name="message" class="form-control" placeholder="Isi komentar disini ..." required=""></textarea>
                     </div>
             
                     <div class="form-group tm-d-flex">
