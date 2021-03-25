@@ -42,28 +42,25 @@
     </header>
     <div class="tm-container-inner tm-features">
         <div class="row">
+            <?php foreach($articles as $key => $art) {
+                if($art->picture){
+                    $pic = base_url().'assets/public/img/articles/'.$art->picture;
+                } else {
+                    $pic = base_url().'assets/public/img/default/default.png';
+                }?>
             <div class="col-lg-4">
                 <div class="tm-feature">
-                    <i class="fas fa-4x fa-pepper-hot tm-feature-icon"></i>
-                    <p class="tm-feature-description">Donec sed orci fermentum, convallis lacus id, tempus elit. Sed eu neque accumsan, porttitor arcu a, interdum est. Donec in risus eu ante.</p>
-                    <a href="index.html" class="tm-btn tm-btn-primary">Read More</a>
+                    <!-- <i class="fas fa-4x fa-pepper-hot tm-feature-icon"></i> -->
+                    <img src="<?php echo $pic?>" width="128" alt="" srcset="">
+                    <p class="tm-feature-description">
+                        <?php if(strlen($art->content) > 100) echo substr($art->content, 0, 97) . '...'?>
+                    </p>
+                    <a href="<?php echo base_url().'news/'.$art->created_at.'-'.$art->slug;?>" class="tm-btn tm-btn-primary">Read More</a>
                 </div>
             </div>
-            <div class="col-lg-4">
-                <div class="tm-feature">
-                    <i class="fas fa-4x fa-seedling tm-feature-icon"></i>
-                    <p class="tm-feature-description">Maecenas pretium rutrum molestie. Duis dignissim egestas turpis sit. Nam sed suscipit odio. Morbi in dolor finibus, consequat nisl eget.</p>
-                    <a href="index.html" class="tm-btn tm-btn-success">Read More</a>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="tm-feature">
-                    <i class="fas fa-4x fa-cocktail tm-feature-icon"></i>
-                    <p class="tm-feature-description">Morbi in dolor finibus, consequat nisl eget, pretium nunc. Maecenas pretium rutrum molestie. Duis dignissim egestas turpis sit.</p>
-                    <a href="index.html" class="tm-btn tm-btn-danger">Read More</a>
-                </div>
-            </div>
+            <?php if($key >= 2) break; } ?>
         </div>
+        <a href="<?php echo base_url().'news';?>" class="block">Read All News</a>
     </div>
     <div class="tm-container-inner tm-history">
         <div class="row">

@@ -1,5 +1,5 @@
 		<footer class="tm-footer text-center">
-			<p>Copyright &copy; 2021 <a href="https://akhirwan.github.io/">akhirwan.github.io</a> 
+			<p>Copyright &copy; 2021 <a href="https://akhirwan.github.io/" target="_blank">akhirwan.github.io</a> 
             
             | Design: <a rel="nofollow" href="#">TemplateMo</a></p>
 		</footer>

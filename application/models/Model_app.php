@@ -26,6 +26,11 @@ class Model_app extends CI_Model{
 		$this->db->update($table, $data);
 	}
 	
+	function order_data($where, $orderBy, $order, $table){
+		$this->db->order_by($orderBy, $order);
+		return $this->db->get_where($table, $where);
+	}
+	
 	function get_data($table){
 		return $this->db->get($table);
 	}

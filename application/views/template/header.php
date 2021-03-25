@@ -13,6 +13,25 @@
 
     <link href="<?php echo base_url('assets/public/css/all.min.css')?>" rel="stylesheet" />
 	<link href="<?php echo base_url('assets/public/css/templatemo-style.css')?>" rel="stylesheet" />
+
+	<style>
+		.block {
+			display: block;
+			width: 100%;
+			border: 1px solid #ccc;
+			background-color: transparent;
+			color: #626364;
+			padding: 14px 28px;
+			font-size: 16px;
+			cursor: pointer;
+			text-align: center;
+		}
+
+		.block:hover {
+			color: white;
+  			background-color: #98999A;
+		}
+	</style>
 </head>
 <!--
 
@@ -42,6 +61,7 @@ https://templatemo.com/tm-539-simple-house
 								<li class="tm-nav-li"><a href="<?php echo base_url();?>" class="tm-nav-link <?php if(isset($active_home)){echo $active_home ;}?>">Home</a></li>
 								<li class="tm-nav-li"><a href="<?php echo base_url().'about';?>" class="tm-nav-link <?php if(isset($active_about)){echo $active_about ;}?>">About</a></li>
 								<li class="tm-nav-li"><a href="<?php echo base_url().'contact';?>" class="tm-nav-link <?php if(isset($active_contact)){echo $active_contact ;}?>">Contact</a></li>
+								<li class="tm-nav-li"><a href="<?php echo base_url().'news';?>" class="tm-nav-link <?php if(isset($active_news)){echo $active_news ;}?>">News and Events</a></li>
 							</ul>
 						</nav>	
 					</div>

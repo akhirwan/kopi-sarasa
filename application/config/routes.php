@@ -56,6 +56,9 @@ $route['home/(:any)'] = 'Home/Home/$1';
 $route['about'] = 'Home/About';
 $route['contact'] = 'Home/Contact';
 
+$route['news'] = 'Articles';
+$route['news/(:any)'] = 'Articles/News/$1';
+
 $route['author'] = 'Admin/Login';
 $route['author-logout'] = 'Admin/Login/Logout';
 

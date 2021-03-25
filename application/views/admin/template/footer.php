@@ -1,7 +1,7 @@
 </div>    
 		<footer class="app-footer">
             <div class="wrapper">
-                <span class="pull-right">2.1 <i class="fa fa-long-arrow-up"></i></span><a href="https://akhirwan.github.io/">akhirwan.github.io</a> © 2021 Copyright.
+                <span class="pull-right">2.1 <i class="fa fa-long-arrow-up"></i></span><a href="https://akhirwan.github.io/" target="_blank">akhirwan.github.io</a> © 2021 Copyright.
             </div>
         </footer>
     <div>

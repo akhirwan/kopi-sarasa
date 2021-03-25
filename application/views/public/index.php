@@ -26,8 +26,7 @@
     <div class="row tm-gallery">
         <!-- gallery page 1 -->
         <div id="tm-gallery-page-pizza" class="tm-gallery-page">
-            <?php foreach($items as $item){?>
-            <!-- <article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item"> -->
+            <?php foreach($items as $key => $item){?>
             <article class="col-12 tm-gallery-item">
                 <figure>
                     <img src="<?php echo base_url('assets/public/img/items/'.$item->picture)?>" alt="Image" class="img-fluid tm-gallery-img" />
@@ -38,21 +37,27 @@
                     </figcaption>
                 </figure>
             </article>
+            <?php //if($key >= 7) break; ?>
             <?php } ?>
         </div> 
     </div>
+    <?php if($headlines[0]->picture != ""){
+        $pic = base_url().'assets/public/img/articles/'.$headlines[0]->picture;
+    }else{
+        $pic = base_url().'assets/public/img/default/default.png';
+    }?>
     <div class="tm-section tm-container-inner">
         <div class="row">
             <div class="col-md-6">
                 <figure class="tm-description-figure">
-                    <img src="<?php echo base_url('assets/public/img/img-01.jpg')?>" alt="Image" class="img-fluid" />
+                    <img src="<?php echo $pic;?>" alt="Image" class="img-fluid" />
                 </figure>
             </div>
             <div class="col-md-6">
                 <div class="tm-description-box"> 
-                    <h4 class="tm-gallery-title">Maecenas nulla neque</h4>
-                    <p class="tm-mb-45">Redistributing this template as a downloadable ZIP file on any template collection site is strictly prohibited. You will need to <a rel="nofollow" href="https://templatemo.com/contact">talk to us</a> for additional permissions about our templates. Thank you.</p>
-                    <a href="about.html" class="tm-btn tm-btn-default tm-right">Read More</a>
+                    <h4 class="tm-gallery-title"><?php echo $headlines[0]->title;?></h4>
+                    <p class="tm-mb-45"><?php if(strlen($headlines[0]->content) > 150) echo substr($headlines[0]->content, 0, 97) . '...'?></p>
+                    <a href="<?php echo base_url().'news/'.$headlines[0]->created_at.'-'.$headlines[0]->slug;?>" class="tm-btn tm-btn-default tm-right">Read More</a>
                 </div>
             </div>
         </div>

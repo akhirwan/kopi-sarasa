@@ -24,7 +24,7 @@
                                     <th>Title</th>
                                     <th>Slug</th>
                                     <th width="15%">Status</th>
-                                    <th width="15%">Preview</th>
+                                    <th width="15%">Headlines</th>
                                     <th width="15%">Actions</th>
                                 </tr>
                             </thead>
@@ -34,7 +34,7 @@
                                     <th>Title</th>
                                     <th>Slug</th>
                                     <th width="15%">Status</th>
-                                    <th width="15%">Preview</th>
+                                    <th width="15%">Headlines</th>
                                     <th width="15%">Actions</th>
                                 </tr>
                             </tfoot>
@@ -44,11 +44,29 @@
                                     <td><?php echo $i++;?></td>
                                     <td><?php echo $art->title;?></td>
                                     <td><?php echo $art->slug;?></td>
-                                    <td><?php echo $art->is_published?></td>
-                                    <td><a href="<?php echo base_url().'manage-articles';?>" class="btn btn-xs btn-primary">Preview</a></td>
+                                    <td>
+                                        <form id="activeForm" action="<?php echo base_url().'Admin/Articles/Publish'; ?>" method="post">
+                                            <input type="hidden" name="id" value="<?php echo $art->id;?>">
+                                            <?php if($art->is_published == 1){?>
+                                                <input type="submit" class="btn btn-xs btn-info" name="is_published" value="Published" onclick="return confirm('Masukan ke draft?');">
+                                            <?php } else {?>
+                                                <input type="submit" class="btn btn-xs btn-default" name="is_published" value="Draft" onclick="return confirm('Terbitkan artikel ini?');">
+                                            <?php } ?>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form id="activeForm" action="<?php echo base_url().'Admin/Articles/Headlines'; ?>" method="post">
+                                            <input type="hidden" name="id" value="<?php echo $art->id;?>">
+                                            <?php if($art->display == 1){?>
+                                                <input type="submit" class="btn btn-xs btn-success" name="display" value="Headlines" onclick="return confirm('Hapus dari headlines?');">
+                                            <?php } else {?>
+                                                <input type="submit" class="btn btn-xs btn-default" name="display" value="Common" onclick="return confirm('Jadikan headlines?');">
+                                            <?php } ?>
+                                        </form>
+                                    </td>
                                     <td>
                                         <a href="<?php echo base_url().'manage-article/'.$art->id;?>" class="btn btn-xs btn-primary">Edit</a>
-                                        <a href="<?php echo base_url().'Admin/Articles/'.$art->id;?>" class="btn btn-xs btn-primary">Delete</a>
+                                        <a href="<?php echo base_url().'Admin/Articles/Delete/'.$art->id;?>" class="btn btn-xs btn-primary" onclick="return confirm('Hapus artikel ini?');">Delete</a>
                                     </td>
                                 </tr>
                             <?php } ?>

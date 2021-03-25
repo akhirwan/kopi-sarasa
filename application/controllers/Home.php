@@ -1,5 +1,4 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller {
 
@@ -19,8 +18,10 @@ class Home extends CI_Controller {
 
 		$data['quotes'] = $this->db->query("SELECT * FROM quotes WHERE paging = 'home' AND is_active = 1")->result();
 		$data['categories'] = $this->Model_app->edit_data(['is_active' => 1], 'categories')->result(); 
+		
+		$data['items'] = $this->Model_app->order_data(['is_active' => 1], 'id', 'DESC', 'items')->result();
 
-		$data['items'] = $this->Model_app->edit_data(['is_active' => 1], 'items')->result(); 
+		$data['headlines'] = $this->Model_app->order_data(['is_published' => 1, 'display' => 1], 'id', 'DESC', 'articles')->result();
 		
 		$this->load->view('template/header', $data);
 		$this->load->view('public/index', $data);
@@ -38,7 +39,9 @@ class Home extends CI_Controller {
 		$data['quotes'] = $this->db->query("SELECT * FROM quotes WHERE paging = 'home' AND is_active = 1")->result();
 		$data['categories'] = $this->Model_app->edit_data(['is_active' => 1], 'categories')->result(); 
 		
-		$data['items'] = $this->Model_app->edit_data(['is_active' => 1, 'category' => $id], 'items')->result(); 
+		$data['items'] = $this->Model_app->order_data(['is_active' => 1, 'category' => $id], 'id', 'DESC', 'items')->result();
+
+		$data['headlines'] = $this->Model_app->order_data(['is_published' => 1, 'display' => 1], 'id', 'DESC', 'articles')->result();
 		
 		$this->load->view('template/header', $data);
 		$this->load->view('public/home', $data);
@@ -54,7 +57,10 @@ class Home extends CI_Controller {
 		$data['active_about'] = 'active';
 
 		$data['quotes'] = $this->db->query("SELECT * FROM quotes WHERE paging = 'about' AND is_active = 1")->result();
-		$data['users'] = $this->Model_app->edit_data(['is_active' => 1], 'user')->result();
+		// $data['users'] = $this->Model_app->edit_data(['is_active' => 1], 'user')->result();
+		// $data['articles'] = $this->Model_app->edit_data(['is_published' => 1], 'articles')->result();
+		$data['users'] = $this->Model_app->order_data(['is_active' => 1], 'uid', 'ASC', 'user')->result();
+		$data['articles'] = $this->Model_app->order_data(['is_published' => 1, 'display' => 0], 'id', 'DESC', 'articles')->result();
 		
 		$this->load->view('template/header', $data);
 		$this->load->view('public/about', $data);

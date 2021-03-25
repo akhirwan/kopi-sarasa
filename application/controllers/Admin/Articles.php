@@ -25,7 +25,7 @@ class Articles extends CI_Controller {
         $data['config']	= $this->Model_app->get_data('config_info')->row();
         $data['title'] = 'Articles';
 
-        $data['articles'] = $this->Model_app->get_data('articles')->result();
+        $data['articles'] = $this->Model_app->edit_data(['id' => $id], 'articles')->result();
 
         if($id == 0) {
             $data['title'] = '';
@@ -49,15 +49,35 @@ class Articles extends CI_Controller {
         $this->load->view('admin/template/footer');
     }
 
-    public function Action(){
+    public function Action() {
         $id = $this->input->post('id');
 
         $data['title'] = $this->input->post('title');
         $data['slug'] = $this->input->post('slug');
         $data['content'] = $this->input->post('content');
-        $data['is_published'] = $this->input->post('is_published');
-        $data['picture'] = $this->input->post('picture');
-        $data['display'] = $this->input->post('display');
+        $data['display'] = 0;
+        
+        $data['is_published'] = ($this->input->post('is_published') == 'Publish') ? 1 : 0;
+        $isHead = $this->Model_app->edit_data(['id' => $id, 'display' => 1], 'articles')->result();
+        if($isHead) $data['is_published'] = 1;
+
+        if(!empty($_FILES['picture']['name'])){
+            $config['upload_path']          = './assets/public/img/articles/';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['file_name']            = $_FILES['picture']['name'];
+            $config['overwrite']			= true;
+            
+            $this->load->library('upload', $config);
+            if($this->upload->do_upload('picture')){
+                $gambar = $this->upload->data();
+                $picture = $gambar['file_name'];
+                
+                // $this->db->query("UPDATE user SET picture = '$picture', modified_at = '$modifiedAt', modified_by = '$modifiedBy' WHERE uid = $id");
+            }
+        }else{
+            $picture = $this->input->post('picture');
+        }
+        $data['picture'] = $picture;
 
         if($id == 0){
             $data['created_at'] = time();
@@ -71,6 +91,44 @@ class Articles extends CI_Controller {
             $this->Model_app->update_data(['id' => $id],$data,'articles');
         }
 
-        redirect(base_url().'manage-articles');
+        redirect(base_url().'manage-articles?alert=sukses');
+    }
+
+    public function Publish() {
+        $where = ['id' => $this->input->post('id')];
+        
+        if($this->input->post('is_published') == "Published"){
+            $data['is_published'] = 0;
+        } else {
+            $data['is_published'] = 1;
+        }
+    
+        $data['modified_at'] = time();
+        $data['modified_by'] = $this->session->userdata('email');
+        // var_dump($this->input->post('id'), $data);exit;
+    
+        $this->Model_app->update_data($where, $data, 'articles');
+    
+        redirect(base_url().'manage-articles?alert=sukses');
+    }
+
+    public function Headlines() {
+        $where = ['id' => $this->input->post('id')];
+
+        if($this->input->post('display') == "Headlines"){
+            $data['display'] = 0;
+        } else {
+            $this->Model_app->update_data(['display' => 1], ['display' => 0], 'articles');
+            $data['display'] = 1;
+        }
+    
+        $data['display'] = 1;
+        $data['modified_at'] = time();
+        $data['modified_by'] = $this->session->userdata('email');
+        // var_dump($this->input->post('id'), $data);exit;
+    
+        $this->Model_app->update_data($where, $data, 'articles');
+
+        redirect(base_url().'manage-articles?alert=sukses');
     }
 }
