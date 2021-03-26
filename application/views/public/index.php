@@ -41,8 +41,10 @@
             <?php } ?>
         </div> 
     </div>
-    <?php if($headlines[0]->picture != ""){
-        $pic = base_url().'assets/public/img/articles/'.$headlines[0]->picture;
+    <?php 
+    foreach($headlines as $head) {
+    if($head->picture != ""){
+        $pic = base_url().'assets/public/img/articles/'.$head->picture;
     }else{
         $pic = base_url().'assets/public/img/default/default.png';
     }?>
@@ -55,11 +57,12 @@
             </div>
             <div class="col-md-6">
                 <div class="tm-description-box"> 
-                    <h4 class="tm-gallery-title"><?php echo $headlines[0]->title;?></h4>
-                    <p class="tm-mb-45"><?php if(strlen($headlines[0]->content) > 150) echo substr($headlines[0]->content, 0, 97) . '...'?></p>
-                    <a href="<?php echo base_url().'news/'.$headlines[0]->created_at.'-'.$headlines[0]->slug;?>" class="tm-btn tm-btn-default tm-right">Read More</a>
+                    <h4 class="tm-gallery-title"><?php echo $head->title;?></h4>
+                    <p class="tm-mb-45"><?php if(strlen($head->content) > 150) echo substr($head->content, 0, 97) . '...'?></p>
+                    <a href="<?php echo base_url().'news/'.$head->created_at.'-'.$head->slug;?>" class="tm-btn tm-btn-default tm-right">Read More</a>
                 </div>
             </div>
         </div>
     </div>
+    <?php } ?>
 </main>

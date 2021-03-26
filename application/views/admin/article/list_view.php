@@ -65,8 +65,8 @@
                                         </form>
                                     </td>
                                     <td>
-                                        <a href="<?php echo base_url().'manage-article/'.$art->id;?>" class="btn btn-xs btn-primary">Edit</a>
-                                        <a href="<?php echo base_url().'Admin/Articles/Delete/'.$art->id;?>" class="btn btn-xs btn-primary" onclick="return confirm('Hapus artikel ini?');">Delete</a>
+                                        <a href="<?php echo base_url().'manage-article/'.$art->id;?>" class="btn btn-xs btn-warning"><i class='fa fa-edit'></i></a>
+                                        <a href="<?php echo base_url().'Admin/Articles/Delete/'.$art->id;?>" class="btn btn-xs btn-danger" onclick="return confirm('Hapus artikel ini?');"><i class='fa fa-trash'></i></a>
                                     </td>
                                 </tr>
                             <?php } ?>

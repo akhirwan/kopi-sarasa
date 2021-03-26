@@ -35,9 +35,13 @@ class Articles extends CI_Controller {
 
         $time = explode('-', $slug)[0];
 
-        $data['articles'] = $this->Model_app->order_data(['created_at' => $time, 'is_published' => 1], 'id', 'DESC', 'articles')->result();
+		if($time != 'd2ViLXByb2ZpbGU') {
+			$data['articles'] = $this->Model_app->order_data(['created_at' => $time, 'is_published' => 1], 'id', 'DESC', 'articles')->result();
+		} else {
+			$data['articles'] = $this->Model_app->order_data(['display' => 1, 'is_published' => 1], 'id', 'DESC', 'articles')->result();
+		}
 
-        $this->load->view('template/header', $data);
+        $this->load->view('template/header_news', $data);
 		$this->load->view('public/news/detail', $data);
 		$this->load->view('template/footer', $data);
     }

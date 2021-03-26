@@ -52,16 +52,21 @@ class Articles extends CI_Controller {
     }
 
     public function Action() {
+        // var_dump($_FILES);exit;
         $id = $this->input->post('id');
 
         $data['title'] = $this->input->post('title');
         $data['slug'] = $this->input->post('slug');
         $data['content'] = $this->input->post('content');
-        $data['display'] = 0;
         
-        $data['is_published'] = ($this->input->post('is_published') == 'Publish') ? 1 : 0;
         $isHead = $this->Model_app->edit_data(['id' => $id, 'display' => 1], 'articles')->result();
-        if($isHead) $data['is_published'] = 1;
+
+        if($isHead != null) {
+            $data['is_published'] = 1; $data['display'] = 1;
+        }else{
+            $data['display'] = 0;
+            $data['is_published'] = ($this->input->post('is_published') == 'Publish') ? 1 : 0;
+        }
 
         if(!empty($_FILES['picture']['name'])){
             $config['upload_path']          = './assets/public/img/articles/';
@@ -77,7 +82,8 @@ class Articles extends CI_Controller {
                 // $this->db->query("UPDATE user SET picture = '$picture', modified_at = '$modifiedAt', modified_by = '$modifiedBy' WHERE uid = $id");
             }
         }else{
-            $picture = $this->input->post('picture');
+            // $picture = $this->input->post('picture');
+            $picture = ($this->input->post('picture')) ? $this->input->post('picture') : '';
         }
         $data['picture'] = $picture;
 
@@ -101,6 +107,7 @@ class Articles extends CI_Controller {
         
         if($this->input->post('is_published') == "Published"){
             $data['is_published'] = 0;
+            $data['display'] = 0;
         } else {
             $data['is_published'] = 1;
         }
@@ -122,15 +129,21 @@ class Articles extends CI_Controller {
         } else {
             $this->Model_app->update_data(['display' => 1], ['display' => 0], 'articles');
             $data['display'] = 1;
+            $data['is_published'] = 1;
         }
     
-        $data['display'] = 1;
+        // $data['display'] = 1;
         $data['modified_at'] = time();
         $data['modified_by'] = $this->session->userdata('email');
         // var_dump($this->input->post('id'), $data);exit;
     
         $this->Model_app->update_data($where, $data, 'articles');
 
+        redirect(base_url().'manage-articles?alert=sukses');
+    }
+
+    public function Delete($id) {
+        $this->Model_app->delete_data(['id' => $id],'articles');
         redirect(base_url().'manage-articles?alert=sukses');
     }
 }

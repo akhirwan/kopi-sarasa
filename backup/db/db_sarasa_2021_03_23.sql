@@ -27,6 +27,25 @@ SET time_zone = "+00:00";
 -- Table structure for table `categories`
 --
 
+CREATE TABLE `articles` (
+  `id` int(11) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `content` varchar(255) NOT NULL,
+  `display` int(11) NOT NULL,
+  `is_published` int(11) NOT NULL,
+  `picture` varchar(50) NOT NULL,
+  `created_at` int(20) NOT NULL,
+  `modified_at` int(20) NOT NULL,
+  `created_by` varchar(50) NOT NULL,
+  `modified_by` varchar(50) NOT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Table structure for table `categories`
+--
+
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,

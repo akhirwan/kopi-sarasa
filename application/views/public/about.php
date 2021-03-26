@@ -31,7 +31,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="placeholder-2">
-                    <div class="parallax-window-2" data-parallax="scroll" data-image-src="<?php echo base_url('assets/public/img/about-05.jpg')?>"></div>		
+                    <div class="parallax-window-2" data-parallax="scroll" data-image-src="<?php echo base_url().'assets/public/img/body/'.$config->body_banner;?>"></div>		
                 </div>
             </div>
         </div>
@@ -47,13 +47,20 @@
                     $pic = base_url().'assets/public/img/articles/'.$art->picture;
                 } else {
                     $pic = base_url().'assets/public/img/default/default.png';
-                }?>
+                }
+                
+                if(strlen($art->content) > 100) {
+                    $content = substr($art->content, 0, 97) . '...';
+                } else {
+                    $content = $art->content;
+                }
+                ?>
             <div class="col-lg-4">
                 <div class="tm-feature">
                     <!-- <i class="fas fa-4x fa-pepper-hot tm-feature-icon"></i> -->
                     <img src="<?php echo $pic?>" width="128" alt="" srcset="">
                     <p class="tm-feature-description">
-                        <?php if(strlen($art->content) > 100) echo substr($art->content, 0, 97) . '...'?>
+                        <?php echo $content?>
                     </p>
                     <a href="<?php echo base_url().'news/'.$art->created_at.'-'.$art->slug;?>" class="tm-btn tm-btn-primary">Read More</a>
                 </div>
@@ -66,11 +73,26 @@
         <div class="row">
             <div class="col-12">
                 <div class="tm-history-inner">
-                    <img src="<?php echo base_url('assets/public/img/about-06.jpg')?>" alt="Image" class="img-fluid tm-history-img" />
+                    <?php
+                    if($config->desc_banner){
+                        $desc = base_url().'assets/public/img/about/'.$config->desc_banner;
+                    } else {
+                        $desc = base_url().'assets/public/img/default/default.png';
+                    }
+                    ?>
+                    <img src="<?php echo $desc;?>" alt="Image" class="img-fluid tm-history-img" />
                     <div class="tm-history-text"> 
-                        <h4 class="tm-history-title">History of our restaurant</h4>
-                        <p class="tm-mb-p">Sed ligula risus, interdum aliquet imperdiet sit amet, auctor sit amet justo. Maecenas posuere lorem id augue interdum vehicula. Praesent sed leo eget libero ultricies congue.</p>
-                        <p>Redistributing this template as a downloadable ZIP file on any template collection site is strictly prohibited. You will need to <a href="https://templatemo.com/contact">contact TemplateMo</a> for additional permissions about our templates. Thank you.</p>
+                        <h4 class="tm-history-title"><?php echo $config->desc_title; ?></h4>
+                        <p class="tm-mb-p">
+                        <?php
+                            if(strlen($config->description) > 350) {
+                                echo substr($config->description, 0, 347) . '...';
+                            } else {
+                                echo $config->description;
+                            }
+                        ?>
+                        </p><br>
+                        <a href="<?php echo base_url().'news/d2ViLXByb2ZpbGU-'.str_replace(' ', '-', strtolower($config->desc_title));?>" class="tm-btn tm-btn-default">Read More</a>
                     </div>
                 </div>	
             </div>

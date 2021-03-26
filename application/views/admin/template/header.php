@@ -167,8 +167,9 @@
                                 <div id="config" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <ul class="nav navbar-nav">
-                                            <li><a href="<?php echo base_url().'manage-info' ?>">Web Info</a></li>
-                                            <li><a href="<?php echo base_url().'manage-content' ?>">Web Content</a></li>
+                                            <li><a href="<?php echo base_url().'manage-info' ?>">Website Info</a></li>
+                                            <li><a href="<?php echo base_url().'manage-about' ?>">About Website</a></li>
+                                            <li><a href="<?php echo base_url().'manage-content' ?>">Website Contents</a></li>
                                         </ul>
                                     </div>
                                 </div>

@@ -3,7 +3,7 @@
 	<div class="side-body padding-top">
         <div class="row">
             <div class="col-xs-12">
-                <div class="card fresh-color card-success">
+                <div class="card fresh-color card-info">
                     <div class="card-header">
                         <div class="card-title">
                             <div class="title">Website Information</div>
@@ -18,7 +18,7 @@
                         }
 
                         foreach($configure as $conf){
-                        echo form_open_multipart('Admin/Dashboard/Update');
+                        echo form_open_multipart('Admin/Dashboard/UpdateInfo');
                     ?>
                             <div class="col-lg-6">
                                 <div class="form-group">
@@ -75,15 +75,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="map">Map</label>
-                                    <textarea class="form-control" id="map" name="map" rows="3"><?php echo $conf->map; ?></textarea>
+                                    <textarea class="form-control" id="map" name="map" rows="7"><?php echo $conf->map; ?></textarea>
                                     <?php echo form_error('map');?>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="logo">Logo</label>
                                     <input type="file" id="logo" name="logo"><br>
-                                    <img src="<?php echo base_url().'assets/public/img/logo/'.$conf->logo; ?>" width="48" alt="" srcset="" style="background-color: gray;">
-                                    <p class="help-block"><?php echo $conf->logo; ?></p>
-                                </div>  
+                                    <img src="<?php //echo base_url().'assets/public/img/logo/'.$conf->logo; ?>" width="48" alt="" srcset="" style="background-color: gray;">
+                                    <p class="help-block"><?php //echo $conf->logo; ?></p>
+                                </div>   -->
                             </div>
                             <button type="submit" class="btn btn-success"><i class="fa fa-paper-plane"></i> Submit</button>
                     <?php 
