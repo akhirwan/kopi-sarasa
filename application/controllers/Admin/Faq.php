@@ -13,6 +13,7 @@ class Faq extends CI_Controller {
   public function Index() {
     $data['config']	= $this->Model_app->get_data('config_info')->row();
     $data['title'] = 'FAQ';
+		$data['active_faq'] = 'active';
 
     $data['faqs'] = $this->Model_app->get_data('faq')->result();
     $data['messages'] = $this->Model_app->get_data('messages')->result();

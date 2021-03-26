@@ -125,41 +125,53 @@
                             </button>
                         </div>
                         <ul class="nav navbar-nav">
-                            <li>
+                            <li class="<?php if(isset($active_dashboard)){echo $active_dashboard ;}?>">
                                 <a href="<?php echo base_url().'manage-dashboard' ?>">
                                     <span class="icon fa fa-tachometer"></span><span class="title">Dashboard</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="<?php if(isset($active_faq)){echo $active_faq ;}?>">
                                 <a href="<?php echo base_url().'manage-faq' ?>">
                                     <span class="icon fa fa-question-circle"></span><span class="title">FAQ</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="<?php if(isset($active_items)){echo $active_items ;}?>">
                                 <a href="<?php echo base_url().'manage-items' ?>">
                                     <span class="icon fa fa-cutlery"></span><span class="title">Items</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="<?php if(isset($active_categories)){echo $active_categories ;}?>">
                                 <a href="<?php echo base_url().'manage-categories' ?>">
                                     <span class="icon fa fa-cubes"></span><span class="title">Categories</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="<?php if(isset($active_articles)){echo $active_articles ;}?>">
                                 <a href="<?php echo base_url().'manage-articles' ?>">
                                     <span class="icon fa fa-newspaper-o"></span><span class="title">Articles</span>
                                 </a>
                             </li>
 							<?php if($this->session->userdata('level') == "admin"){ ?>
-                            <li>
+                            <li class="<?php if(isset($active_users)){echo $active_users ;}?>">
                                 <a href="<?php echo base_url().'manage-users' ?>">
                                     <span class="icon fa fa-users"></span><span class="title">Users and Role</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="<?php echo base_url().'manage-info' ?>">
+                            <li class="<?php if(isset($active_config)){echo $active_config ;}?>">
+                                <!-- <a href="<?php //echo base_url().'manage-info' ?>">
+                                    <span class="icon fa fa-cog"></span><span class="title">Configurations</span>
+                                </a> -->
+                                <a data-toggle="collapse" href="#config">
                                     <span class="icon fa fa-cog"></span><span class="title">Configurations</span>
                                 </a>
+                                <!-- Dropdown level 1 -->
+                                <div id="config" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="<?php echo base_url().'manage-info' ?>">Web Info</a></li>
+                                            <li><a href="<?php echo base_url().'manage-content' ?>">Web Content</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </li>
 							<?php } ?>
                         </ul>

@@ -13,6 +13,7 @@ class Dashboard extends CI_Controller {
     public function Index() {
 		$data['config']	= $this->Model_app->get_data('config_info')->row();
 		$data['title'] = 'Dashboard';
+		$data['active_dashboard'] = 'active';
 
 		$data['configure'] = $this->Model_app->get_data('config_info')->result();
         
@@ -21,9 +22,10 @@ class Dashboard extends CI_Controller {
 		$this->load->view('admin/template/footer');
     }
 
-    public function Config() {
+    public function ConfInfo() {
 		$data['config']	= $this->Model_app->get_data('config_info')->row();
 		$data['title'] = 'Dashboard';
+		$data['active_config'] = 'active';
 
 		$data['configure'] = $this->Model_app->get_data('config_info')->result();
         
@@ -73,4 +75,18 @@ class Dashboard extends CI_Controller {
 			redirect(base_url().'manage-info');
 		}
 	}
+
+    public function ConfContent() {
+		$data['config']	= $this->Model_app->get_data('config_info')->row();
+		$data['title'] = 'Dashboard';
+		$data['active_config'] = 'active';
+
+		$data['configure'] = $this->Model_app->get_data('config_info')->result();
+        
+		$this->load->view('admin/template/header', $data);
+		$this->load->view('admin/dashboard/web_content', $data);
+		$this->load->view('admin/template/footer');
+    }
+
+	public function Upload() {}
 }

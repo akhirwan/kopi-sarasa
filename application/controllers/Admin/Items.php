@@ -13,6 +13,7 @@ class Items extends CI_Controller {
     public function Index() {
         $data['config']	= $this->Model_app->get_data('config_info')->row();
         $data['title'] = 'Items';
+		$data['active_items'] = 'active';
 
         $data['items'] = $this->Model_app->get_data('items')->result();
         $data['categories'] = $this->Model_app->get_data('categories')->result();
@@ -25,6 +26,7 @@ class Items extends CI_Controller {
     public function Write($id) {
         $data['config']	= $this->Model_app->get_data('config_info')->row();
         $data['title'] = 'Items';
+		$data['active_items'] = 'active';
 
         $where = ['id' => $id];
         $data['items'] = $this->Model_app->edit_data($where, 'items')->result();

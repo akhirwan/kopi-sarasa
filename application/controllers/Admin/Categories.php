@@ -13,6 +13,7 @@ class Categories extends CI_Controller {
     public function Index() {
         $data['config']	= $this->Model_app->get_data('config_info')->row();
         $data['title'] = 'Categories';
+		$data['active_categories'] = 'active';
         
         $data['categories'] = $this->Model_app->get_data('categories')->result();
             

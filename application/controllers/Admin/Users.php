@@ -13,6 +13,7 @@ class Users extends CI_Controller {
     public function Index(){
         $data['config']	= $this->Model_app->get_data('config_info')->row();
         $data['title'] = 'Users';
+		$data['active_users'] = 'active';
 
         $data['users'] = $this->Model_app->get_data('user')->result();
             
@@ -24,6 +25,7 @@ class Users extends CI_Controller {
     public function WriteInfo($id){
         $data['config']	= $this->Model_app->get_data('config_info')->row();
         $data['title'] = 'Users';
+		$data['active_users'] = 'active';
         
         $data['users'] = $this->Model_app->edit_data(['uid' => $id], 'user')->result();
 
@@ -133,6 +135,7 @@ class Users extends CI_Controller {
     public function UploadImage($id){
         $data['config']	= $this->Model_app->get_data('config_info')->row();
         $data['title'] = 'Users';
+		$data['active_users'] = 'active';
 
         $data['users'] = $this->Model_app->edit_data(['uid' => $id], 'user')->result();
 
@@ -182,6 +185,7 @@ class Users extends CI_Controller {
     public function WriteRole($id){
         $data['config']	= $this->Model_app->get_data('config_info')->row();
         $data['title'] = 'Users';
+		$data['active_users'] = 'active';
         
         $data['credential'] = $this->Model_app->edit_data(['xid' => $id], 'credential')->result();
 

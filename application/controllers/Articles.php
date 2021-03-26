@@ -16,7 +16,9 @@ class Articles extends CI_Controller {
 		$data['meta_description'] = $data['config']->company;
 		$data['active_news'] = 'active';
 
-        $data['articles'] = $this->Model_app->order_data(['is_published' => 1], 'id', 'DESC', 'articles')->result();
+        $data['headlines'] = $this->Model_app->order_data(['display' => 1, 'is_published' => 1], 'id', 'DESC', 'articles')->result();
+
+        $data['commons'] = $this->Model_app->order_data(['display' => 0, 'is_published' => 1], 'id', 'DESC', 'articles')->result();
 
         $this->load->view('template/header', $data);
 		$this->load->view('public/news/index', $data);

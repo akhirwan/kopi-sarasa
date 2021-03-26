@@ -64,7 +64,8 @@ $route['author-logout'] = 'Admin/Login/Logout';
 
 $route['manage-dashboard'] = 'Admin/Dashboard';
 $route['manage-faq'] = 'Admin/Faq';
-$route['manage-info'] = 'Admin/Dashboard/Config';
+$route['manage-info'] = 'Admin/Dashboard/ConfInfo';
+$route['manage-content'] = 'Admin/Dashboard/ConfContent';
 
 $route['manage-items'] = 'Admin/Items';
 $route['manage-item/(:any)'] = 'Admin/Items/Write/$1';
