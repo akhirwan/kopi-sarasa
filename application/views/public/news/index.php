@@ -1,7 +1,7 @@
 <?php $quo = (isset($quotes[0]->quote)) ? $quotes[0]->quote : ''; ?>
 <main>
     <header class="row tm-welcome-section">
-        <h2 class="col-12 text-center tm-section-title">News and Events</h2>
+        <h2 class="col-12 text-center tm-section-title">Headlines</h2>
     </header>
 
     <?php 
@@ -66,13 +66,21 @@
                     <!-- <i class="fas fa-4x fa-pepper-hot tm-feature-icon"></i> -->
                     <img src="<?php echo $pic?>" width="128" alt="" srcset="">
                     <p class="tm-feature-description">
-                        <?php echo $content?>
+                        <?php echo $art->title?>
                     </p>
                     <a href="<?php echo base_url().'news/'.$art->created_at.'-'.$art->slug;?>" class="tm-btn tm-btn-primary">Read More</a>
                 </div>
             </div>
-            <?php if($key >= 2) break; } ?>
+            <?php } ?>
         </div>
-        <a href="<?php echo base_url().'news';?>" class="block">Read All News</a>
+        <?php $prev = $page - 1; $next = $page + 1;?>
+        <p class="col-12 text-center">
+            <?php if($page > 1) {?>
+                <a href="<?php echo base_url().'news?page='.$prev;?>" class="tm-btn tm-btn-default">Prev</a>
+            <?php } ?>
+            <?php if(count($commons) >= $limit) {?>
+                <a href="<?php echo base_url().'news?page='.$next;?>" class="tm-btn tm-btn-default">Next</a>
+            <?php } ?>
+        </p>
     </div>
 </main>

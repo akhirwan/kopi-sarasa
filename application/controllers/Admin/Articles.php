@@ -52,7 +52,6 @@ class Articles extends CI_Controller {
     }
 
     public function Action() {
-        // var_dump($_FILES);exit;
         $id = $this->input->post('id');
 
         $data['title'] = $this->input->post('title');

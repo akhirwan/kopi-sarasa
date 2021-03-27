@@ -18,7 +18,18 @@ class Articles extends CI_Controller {
 
         $data['headlines'] = $this->Model_app->order_data(['display' => 1, 'is_published' => 1], 'id', 'DESC', 'articles')->result();
 
-        $data['commons'] = $this->Model_app->order_data(['display' => 0, 'is_published' => 1], 'id', 'DESC', 'articles')->result();
+		// paging
+		$data['limit'] = 6;
+
+		if(!isset($_GET['page'])) {
+			$data['page'] = 1;
+			$data['offset'] = 0;
+		} else {
+			$data['page'] = $_GET['page'];
+			$data['offset'] = ($_GET['page'] - 1) * $data['limit'];
+		}
+		
+		$data['commons'] = $this->db->query("SELECT * FROM articles WHERE display = 0 AND is_published = 1 ORDER BY id DESC LIMIT " . $data['limit'] . " OFFSET  " . $data['offset'])->result();
 
         $this->load->view('template/header', $data);
 		$this->load->view('public/news/index', $data);
@@ -37,12 +48,17 @@ class Articles extends CI_Controller {
 
 		if($time != 'd2ViLXByb2ZpbGU') {
 			$data['articles'] = $this->Model_app->order_data(['created_at' => $time, 'is_published' => 1], 'id', 'DESC', 'articles')->result();
-		} else {
-			$data['articles'] = $this->Model_app->order_data(['display' => 1, 'is_published' => 1], 'id', 'DESC', 'articles')->result();
-		}
 
-        $this->load->view('template/header_news', $data);
-		$this->load->view('public/news/detail', $data);
+			$data['author']= $this->Model_app->edit_data(['email' => $data['articles'][0]->created_by], 'user')->result();
+
+			$this->load->view('template/header_news', $data);
+			$this->load->view('public/news/detail', $data);
+		} else {
+			// $data['articles'] = $this->Model_app->order_data(['display' => 2, 'is_published' => 1], 'id', 'DESC', 'config_info')->result();
+
+			$this->load->view('template/header_about', $data);
+			$this->load->view('public/news/about', $data);
+		}
 		$this->load->view('template/footer', $data);
     }
 }

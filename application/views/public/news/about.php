@@ -27,23 +27,10 @@ body {
 
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
-<?php 
-  $createdInt = $articles[0]->created_at;
-  $created = new DateTime("@$createdInt");
-  $cdate = ($createdInt == 0) ? "-" : date_format($created, 'd M Y');?>
-
 <main>
     <header class="row tm-welcome-section">
-        <h2 class="col-12 text-center tm-section-title"><?php echo $articles[0]->title;?></h2>
-        <p class="col-12 text-center">
-          <small><b> Date : </b><?php echo $cdate;?></small> ||
-          <small><b> Author : </b><?php echo $author[0]->name;?></small>
-          <a href="<?php echo $author[0]->link_fb;?>" class="tm-social-link"><i class="fab fa-facebook tm-social-icon"></i></a>
-          <a href="<?php echo $author[0]->link_tw;?>" class="tm-social-link"><i class="fab fa-twitter tm-social-icon"></i></a>
-          <a href="<?php echo $author[0]->link_ig;?>" class="tm-social-link"><i class="fab fa-instagram tm-social-icon"></i></a>
-          <a href="<?php echo $author[0]->link_yt;?>" class="tm-social-link"><i class="fab fa-youtube tm-social-icon"></i></a>
-        </p><hr>
-        <p class="col-12 text-left"><?php echo $articles[0]->content;?></p>
+        <h2 class="col-12 text-center tm-section-title" style="color: #555;"><?php echo $config->desc_title;?></h2>
+        <p class="col-12 text-left" style="color: #555;"><?php echo $config->description;?></p>
     </header>
 </main>
 <script>
