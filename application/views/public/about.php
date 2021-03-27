@@ -49,8 +49,8 @@
                     $pic = base_url().'assets/public/img/default/default.png';
                 }
                 
-                if(strlen($art->content) > 100) {
-                    $content = substr($art->content, 0, 97) . '...';
+                if(strlen($art->content) > 50) {
+                    $content = substr($art->content, 0, 47) . '...';
                 } else {
                     $content = $art->content;
                 }
@@ -60,7 +60,7 @@
                     <!-- <i class="fas fa-4x fa-pepper-hot tm-feature-icon"></i> -->
                     <img src="<?php echo $pic?>" width="128" alt="" srcset="">
                     <p class="tm-feature-description">
-                        <?php echo $content?>
+                        <?php echo $art->title?>
                     </p>
                     <a href="<?php echo base_url().'news/'.$art->created_at.'-'.$art->slug;?>" class="tm-btn tm-btn-primary">Read More</a>
                 </div>
