@@ -52,7 +52,7 @@ https://templatemo.com/tm-539-simple-house
 	<!-- Top box -->
 		<!-- Logo & Site Name -->
 		<div class="placeholder">
-			<div class="parallax-window" data-parallax="scroll" data-image-src="<?php echo base_url().'assets/public/img/header/'.$config->head_banner;?>">
+			<div class="parallax-window" data-parallax="scroll" data-image-src="<?php echo (isset($config->head_banner)) ? base_url().'assets/public/img/header/'.$config->head_banner : '';?>">
 				<div class="tm-header">
 					<div class="row tm-header-inner">
 						<div class="col-md-6 col-12">

@@ -31,7 +31,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="placeholder-2">
-                    <div class="parallax-window-2" data-parallax="scroll" data-image-src="<?php echo base_url().'assets/public/img/body/'.$config->body_banner;?>"></div>		
+                    <div class="parallax-window-2" data-parallax="scroll" data-image-src="<?php echo (isset($config->body_banner)) ? base_url().'assets/public/img/body/'.$config->body_banner : '';?>"></div>		
                 </div>
             </div>
         </div>
@@ -69,6 +69,7 @@
         </div>
         <a href="<?php echo base_url().'news';?>" class="block">Read All News</a>
     </div>
+    <?php if(isset($config->desc_banner)){?>
     <div class="tm-container-inner tm-history">
         <div class="row">
             <div class="col-12">
@@ -98,4 +99,5 @@
             </div>
         </div>
     </div>
+    <?php } ?>
 </main>
