@@ -7,9 +7,10 @@
         <h2 class="col-12 text-center tm-section-title">Contact Us</h2>
         <p class="col-12 text-center"><?php echo $quo_c; ?></p>
     </header>
-
+    
     <div class="tm-container-inner-2 tm-contact-section">
         <div class="row">
+            <a href="<?php echo base_url().'contact'?>" class="block" id="commentBtn" onclick="hide()" style="display:none;">Pesan / komentar Anda Berhasil dikirim</a>
             <div class="col-md-6">
                 <form action="<?php echo base_url('Home/Message');?>" method="POST" class="tm-contact-form">
                     <div class="form-group">
@@ -53,13 +54,6 @@
             </div>
         </div>
     </div>
-    
-<!-- How to change your own map point
-1. Go to Google Maps
-2. Click on your location point
-3. Click "Share" and choose "Embed map" tab
-4. Copy only URL and paste it within the src="" field below
--->
     <div class="tm-container-inner-2 tm-map-section">
         <div class="row">
             <div class="col-12">
@@ -89,3 +83,18 @@
         </div>
     </div>
 </main>
+
+<script>
+    var alert = "<?php echo $_GET['alert']?>"
+    
+    if(alert){
+        console.log(alert)
+        if (alert = 'sukses'){
+            document.getElementById("commentBtn").style.display = 'flex';
+        }
+    }
+
+    // function hide() {
+    //     document.getElementById("commentBtn").style.display = 'none';
+    // }
+</script>

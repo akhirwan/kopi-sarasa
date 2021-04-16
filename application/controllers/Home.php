@@ -92,6 +92,6 @@ class Home extends CI_Controller {
 		$data['message'] = $this->input->post('message');
 
 		$this->Model_app->insert_data($data, 'messages');
-		redirect(base_url().'contact');
+		redirect(base_url().'contact?alert=sukses');
 	}
 }
