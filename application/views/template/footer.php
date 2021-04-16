@@ -7,18 +7,19 @@
 	<script src="<?php echo base_url('assets/public/js/jquery.min.js')?>"></script>
 	<script src="<?php echo base_url('assets/public/js/parallax.min.js')?>"></script>
 	<script>
-		// $(document).ready(function(){
-		// 	// Handle click on paging links
-		// 	$('.tm-paging-link').click(function(e){
-		// 		e.preventDefault();
+		
+		$(document).ready(function(){
+			// Handle click on paging links
+			$('.tm-paging-link').click(function(e){
+				e.preventDefault();
 				
-		// 		// var page = $(this).text().toLowerCase();
-		// 		// $('.tm-gallery-page').addClass('hidden');
-		// 		// $('#tm-gallery-page-' + page).removeClass('hidden');
-		// 		$('.tm-paging-link').removeClass('active');
-		// 		$(this).addClass("active");
-		// 	});
-		// });
+				var page = $(this).attr("id");
+				$('.tm-gallery-page').addClass('hidden');
+				$('#tm-gallery-page-' + page).removeClass('hidden');
+				$('.tm-paging-link').removeClass('active');
+				$(this).addClass("active");
+			});
+		});
 		
 		$(document).ready(function () {
 		    $("#gallery").focus();
