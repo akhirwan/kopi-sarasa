@@ -55,6 +55,8 @@ $route['default_controller'] = 'Home';
 $route['home/(:any)'] = 'Home/Home/$1';
 $route['about'] = 'Home/About';
 $route['contact'] = 'Home/Contact';
+$route['menu'] = 'Home/Items';
+$route['teams'] = 'Home/Employees';
 
 $route['news'] = 'Articles';
 $route['news/(:any)'] = 'Articles/News/$1';

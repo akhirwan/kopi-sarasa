@@ -29,7 +29,7 @@ class Login extends CI_Controller {
 			$this->load->model('Model_app');
 			$cek = $this->Model_app->cek_login('credential',$where)->row();
 
-			if($cek->xid) {
+			if(isset($cek->xid)) {
 				// var_dump($cek);die;
 				$check['uid'] = $cek->xid; 
 				$data = $this->Model_app->cek_login('user',$check)->row();

@@ -28,7 +28,7 @@ class Home extends CI_Controller {
 		$this->load->view('template/footer', $data);
 	}
 
-	public function Home($id)	{
+	public function Home($id) {
 		$data['config']	= $this->Model_app->get_data('config_info')->row();
 
 		$data['title'] = 'Home';
@@ -93,5 +93,41 @@ class Home extends CI_Controller {
 
 		$this->Model_app->insert_data($data, 'messages');
 		redirect(base_url().'contact?alert=sukses');
+	}
+	
+	public function Items() {
+        $data['config']	= $this->Model_app->get_data('config_info')->row();
+
+		$data['title'] = 'Menu';
+		$data['meta_keyword'] = $data['config']->app_name;
+		$data['meta_description'] = $data['config']->company;
+		$data['active_item'] = 'active';
+
+		$data['quotes'] = $this->db->query("SELECT * FROM quotes WHERE paging = 'home' AND is_active = 1")->result();
+
+		$data['categories'] = $this->Model_app->edit_data(['is_active' => 1], 'categories')->result(); 
+		
+		$data['items'] = $this->Model_app->order_data(['is_active' => 1], 'id', 'DESC', 'items')->result();
+
+		$this->load->view('template/header', $data);
+		$this->load->view('public/item', $data);
+		$this->load->view('template/footer', $data);
+    }
+
+	public function Employees() {
+		$data['config']	= $this->Model_app->get_data('config_info')->row();
+
+		$data['title'] = 'Teams';
+		$data['meta_keyword'] = $data['config']->app_name;
+		$data['meta_description'] = $data['config']->company;
+		$data['active_team'] = 'active';
+
+		$data['quotes'] = $this->db->query("SELECT * FROM quotes WHERE paging = 'about' AND is_active = 1")->result();
+		
+		$data['users'] = $this->Model_app->order_data(['is_active' => 1], 'uid', 'ASC', 'user')->result();
+		
+		$this->load->view('template/header', $data);
+		$this->load->view('public/team', $data);
+		$this->load->view('template/footer', $data);
 	}
 }

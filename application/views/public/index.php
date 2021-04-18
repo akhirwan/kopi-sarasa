@@ -35,7 +35,7 @@
                     </figcaption>
                 </figure>
             </article>
-        <?php $i++; if($i > 8) break; ?>
+        <?php $i++; if($i > 4) break; ?>
         <?php } ?>
         </div>
 
@@ -53,10 +53,16 @@
                     </figcaption>
                 </figure>
             </article>
-        <?php $i++; if($i > 8) break; ?>
+        <?php $i++; if($i > 4) break; ?>
         <?php }  } ?>
         </div>
         <?php } ?>
+
+        <div class="tm-gallery-page">
+            <a href="<?php echo base_url().'menu';?>" class="tm-btn tm-btn-default tm-right">
+                Go to Menu Page
+            </a>
+        </div>
     </div>
 
     <?php 

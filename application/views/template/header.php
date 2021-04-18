@@ -31,15 +31,61 @@
 			color: white;
   			background-color: #98999A;
 		}
+
+		.dropdown {
+			display: flex;
+			justify-content: flex-end;
+		}
+
+		.dropdown .dropbtn {
+			cursor: pointer;
+			font-size: 16px;  
+			border: none;
+			outline: none;
+			color: white;
+			padding-right: 25px;
+			padding-left: 25px;
+			background-color: inherit;
+			font-family: inherit;
+			margin-bottom: 0;
+			list-style: none;
+		}
+
+		.dropdown:hover .dropbtn, .dropbtn:focus {
+			border-bottom: 1px solid white;
+		}
+
+		.dropdown-content {
+			display: none;
+			position: absolute;
+			background-color: #f9f9f9;
+			min-width: 175px;
+			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			z-index: 1;
+			padding: auto;
+			margin: 0; 
+		}
+
+		.dropdown-content a {
+			float: none;
+			color: black;
+			padding: 12px 16px;
+			text-decoration: none;
+			display: block;
+			text-align: left;
+		}
+
+		.dropdown-content a:hover {
+			color: white;
+			background-color: #98999A;
+		}
+
+		.show {
+			display: block;
+		}
 	</style>
 </head>
-<!--
 
-Simple House
-
-https://templatemo.com/tm-539-simple-house
-
--->
 <body> 
 	<?php 
 		if($config->logo){
@@ -64,10 +110,43 @@ https://templatemo.com/tm-539-simple-house
 						</div>
 						<nav class="col-md-6 col-12 tm-nav">
 							<ul class="tm-nav-ul">
-								<li class="tm-nav-li"><a href="<?php echo base_url();?>" class="tm-nav-link <?php if(isset($active_home)){echo $active_home ;}?>">Home</a></li>
-								<li class="tm-nav-li"><a href="<?php echo base_url().'about';?>" class="tm-nav-link <?php if(isset($active_about)){echo $active_about ;}?>">About</a></li>
-								<li class="tm-nav-li"><a href="<?php echo base_url().'contact';?>" class="tm-nav-link <?php if(isset($active_contact)){echo $active_contact ;}?>">Contact</a></li>
-								<li class="tm-nav-li"><a href="<?php echo base_url().'news';?>" class="tm-nav-link <?php if(isset($active_news)){echo $active_news ;}?>">News and Events</a></li>
+								<li class="tm-nav-li">
+									<a href="<?php echo base_url();?>" class="tm-nav-link <?php if(isset($active_home)){echo $active_home ;}?>">
+										Home
+									</a>
+								</li>
+								<li class="tm-nav-li">
+									<a href="<?php echo base_url().'about';?>" class="tm-nav-link <?php if(isset($active_about)){echo $active_about ;}?>">
+										About
+									</a>
+								</li>
+								<li class="tm-nav-li">
+									<a href="<?php echo base_url().'contact';?>" class="tm-nav-link <?php if(isset($active_contact)){echo $active_contact ;}?>">
+										Contact
+									</a>
+								</li>
+								<li class="tm-nav-li">
+									<!-- <a href="<?php //echo base_url().'news';?>" class="tm-nav-link <?php //if(isset($active_news)){echo $active_news ;}?>"> -->
+									<a class="dropbtn tm-nav-link <?php if(isset($active_news)){echo $active_news ;}?>" onclick="myDrop()" style="cursor: pointer;">
+										Our Services
+										<i class="fa fa-caret-down"></i>
+									</a>
+									<div class="dropdown-content" id="myDropdown">
+										<a href="<?php echo base_url().'teams';?>">Our Teams</a>
+										<a href="<?php echo base_url().'menu';?>">Our Menus</a>
+										<a href="<?php echo base_url().'news';?>">News and Events</a>
+									</div>
+								</li>
+								<!-- <div class="dropdown">
+									<button class="dropbtn" onclick="myDrop()">Our Services
+										<i class="fa fa-caret-down"></i>
+									</button>
+									<div class="dropdown-content" id="myDropdown">
+										<a href="#">Link 1</a>
+										<a href="#">Link 2</a>
+										<a href="#">Link 3</a>
+									</div>
+								</div>  -->
 							</ul>
 						</nav>	
 					</div>

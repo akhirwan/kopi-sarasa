@@ -7,7 +7,7 @@
 
     <div class="tm-container-inner tm-persons">
         <div class="row">
-        <?php foreach($users as $user){?>
+        <?php $i = 1; foreach($users as $user){?>
             <article class="col-lg-6">
                 <figure class="tm-person">
                     <img src="<?php echo base_url('assets/public/img/users/'.$user->picture)?>" alt="Image" class="img-fluid tm-person-img" />
@@ -24,6 +24,7 @@
                     </figcaption>
                 </figure>
             </article>
+        <?php $i++; if($i > 4) break;?>
         <?php } ?>
         </div>
     </div>
