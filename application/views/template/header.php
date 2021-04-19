@@ -127,7 +127,12 @@
 								</li>
 								<li class="tm-nav-li">
 									<!-- <a href="<?php //echo base_url().'news';?>" class="tm-nav-link <?php //if(isset($active_news)){echo $active_news ;}?>"> -->
-									<a class="dropbtn tm-nav-link <?php if(isset($active_news)){echo $active_news ;}?>" onclick="myDrop()" style="cursor: pointer;">
+									<a class="dropbtn tm-nav-link 
+										<?php 
+										if(isset($active_news)){echo $active_news ;}
+										if(isset($active_item)){echo $active_item ;}
+										if(isset($active_team)){echo $active_team ;}
+										?>" onclick="myDrop()" style="cursor: pointer;">
 										Our Services
 										<i class="fa fa-caret-down"></i>
 									</a>

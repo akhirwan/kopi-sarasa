@@ -15,7 +15,13 @@ class Dashboard extends CI_Controller {
 		$data['title'] = 'Dashboard';
 		$data['active_dashboard'] = 'active';
 
+		$data['sum_articles'] 	= $this->Model_app->get_data('articles')->num_rows();
+		$data['sum_users'] 		= $this->Model_app->get_data('user')->num_rows();
+		$data['sum_items'] 		= $this->Model_app->get_data('items')->num_rows();
+
 		$data['configure'] = $this->Model_app->get_data('config_info')->result();
+		
+		$data['messages'] = $this->Model_app->get_data('messages')->result();
         
 		$this->load->view('admin/template/header', $data);
 		$this->load->view('admin/dashboard/index', $data);
