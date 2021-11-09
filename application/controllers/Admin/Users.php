@@ -200,7 +200,7 @@ class Users extends CI_Controller {
         $data['username'] = $this->input->post('username');
         $data['level'] = $this->input->post('level');
 
-        if($this->input->post('password')) $data['password'] = $this->input->post('password');
+        if($this->input->post('password')) $data['password'] = md5($this->input->post('password'));
 
         $this->Model_app->update_data($where, $data, 'credential');
         redirect(base_url().'manage-users');
